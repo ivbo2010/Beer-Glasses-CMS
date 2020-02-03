@@ -1,1 +1,1 @@
-# beer_glasses
+# Beer glasses project with Laravel
