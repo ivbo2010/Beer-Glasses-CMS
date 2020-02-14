@@ -25,16 +25,18 @@
 
 
                         @foreach($data->beers as $post)
-
-                            <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                <div class="case-item">
-                                    <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
-                                        <img src="{{ URL::to('/') }}/images/{{ $post->image }}"  class="img-fluid" alt="our case">
-                                    </div>
-                                    <a href="/beer/{{ $post->id}}"><h6 class="case-item__title">{{ $post->name}}</h6></a>
+							<div class="col-sm-6 col-md-3">
+                                <div class="shop__thumb">
+                                    <a href="/beer/{{ $post->id}}">
+                                        <div class="shop-thumb__img">
+                                            <img src="{{ URL::to('/') }}/images/{{ $post->image }}" class="img-fluid" alt="our case">
+                                        </div>
+                                        <h5 class="shop-thumb__title">
+                                            {{ $post->name}}
+                                        </h5>
+                                    </a>
                                 </div>
                             </div>
-
                         @endforeach
 
                     </div>
