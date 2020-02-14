@@ -37,13 +37,17 @@
                                             <form action="{{ route('country.destroy', $beer->id) }}" method="post">
                                                 <a href="{{ route('country.show', $beer->id) }}"
                                                     class="btn btn-sm btn-warning"><span class="fa fa-eye"></span></a>
-                                                <a href="{{ route('country.edit', $beer->id) }}"
-                                                    class="btn btn-sm btn-info"><span class="fa fa-edit"></span></a>
+                                                @can('edit-users')
+                                                    <a href="{{ route('country.edit', $beer->id) }}"
+                                                        class="btn btn-sm btn-info"><span class="fa fa-edit"></span></a>
+                                                @endcan
                                                 @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">
-                                                    <span class="fa fa-trash"></span>
-                                                </button>
+                                                @can('delete-users')
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">
+                                                        <span class="fa fa-trash"></span>
+                                                    </button>
+                                                @endcan
                                             </form>
                                         </td>
                                     </tr>

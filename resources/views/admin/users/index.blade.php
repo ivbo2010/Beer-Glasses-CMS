@@ -5,14 +5,12 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-
             <div class="col-md-12">
-               {{-- User is {{ Auth::user()->name }}--}}
+                {{-- User is {{ Auth::user()->name }}--}}
                 <div class="card">
-                    <div class="card-header">All Users </div>
+                    <div class="card-header">All Users</div>
                     <div class="card-body">
-
-                         <table id="laravel_datatable" class="table table-bordered table-striped">
+                        <table id="laravel_datatable" class="table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -38,31 +36,39 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @can('edit-users')
-                                            <a href="{{ route('admin.users.edit',$user->id) }}">
-                                                <button type="button" class="btn btn-primary float-left mx-2">Edit</button>
-                                            </a>
-                                        @endcan
-                                            @can('delete-users')
-                                        <form action="{{ route('admin.users.destroy', $user) }}" method="post" class="float-left">
-                                            @csrf
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn btn-danger">Delete
-                                            </button>
-                                        </form>
+                                        <form action="{{ route('admin.users.destroy', $user) }}" method="post">
+                                            @can('edit-users')
+                                                <a href="{{ route('admin.users.edit',$user->id) }}">
+                                                    <button type="button" class="btn btn-sm btn-info">
+                                                        <i class="fa fa-edit"></i></button>
+                                                </a>
                                             @endcan
+                                            @can('delete-users')
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-sm btn-warning">
+                                                    <i class="fa fa-trash"></i></button>
+
+                                            @endcan
+                                        </form>
                                     </td>
                                 </tr>
 
                             @endforeach
                             </tbody>
                         </table>
-						
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {{-- @if (auth()->check())
+         @if (auth()->user()->isAdmin())
+             Hello Admin
+         @else
+             Hello standard user
+         @endif
+     @endif--}}
 @endsection
 
 @section('js')
