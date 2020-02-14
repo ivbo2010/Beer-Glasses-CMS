@@ -67,4 +67,9 @@ class User extends Authenticatable {
         return false;
     }
 
+    public function isAdmin()
+    {
+        return $this->roles()->where('role_id', 1)->first();
+    }
+
 }

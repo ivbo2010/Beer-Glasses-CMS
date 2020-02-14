@@ -23,7 +23,7 @@ Auth::routes();
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function (){
     Route::resource('users', 'UsersController' , ['except'=>['show','create','store']]);
-	Route::get('home', 'HomeController@index');
+
 });
 
 
@@ -69,7 +69,7 @@ Route::get('admin/pub/restore/{id}',[
     'uses' => 'Admin\PubController@restore',
     'as' => 'pub.restore'
 ]);
-
+Route::get('admin/home', 'Admin\HomeController@index');
 Route::resource('admin/beer', 'Admin\BeerController');
 Route::resource('admin/category', 'Admin\CategoryController');
 Route::resource('admin/country', 'Admin\CountryController');
