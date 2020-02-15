@@ -19,6 +19,10 @@ class CategoriesTableSeeder extends Seeder
             'name' => 'Amstel',
             'image' => '1489614712.jpeg',
         ]);
+        $categories =Category::create([
+            'name' => 'Bernard',
+            'image' => '883000768.jpg',
+        ]);
 
     }
 }
