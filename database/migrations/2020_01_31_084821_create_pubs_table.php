@@ -16,7 +16,7 @@ class CreatePubsTable extends Migration
         Schema::create('pubs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->string('category_id');
             $table->string('image');
             $table->SoftDeletes();

@@ -9,7 +9,6 @@
                              alt="Card image">
                         <div class="card-body">
                             <h4 class="card-title">{{ $beer->name }}</h4>
-                            <div class="card-text">{!! $beer->description !!}</div>
                             <p class="card-text">{{ $beer->qty }}</p>
                             <p class="card-text">{{ $beer->category['name'] }}</p>
                             <p class="card-text">{{ $beer->tag['name'] }}</p>
