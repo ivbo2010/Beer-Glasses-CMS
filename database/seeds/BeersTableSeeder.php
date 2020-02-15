@@ -21,6 +21,7 @@ class BeersTableSeeder extends Seeder
             'category_id' => '1',
             'country_id' => '1',
             'tag_id' => '1',
+            'status'=>'1',
             'image' => '648869788.jpg',
         ]);
         $beers =Beer::create([
@@ -30,6 +31,7 @@ class BeersTableSeeder extends Seeder
             'category_id' => '2',
             'country_id' => '1',
             'tag_id' => '1',
+            'status'=>'1',
             'image' => '361241082.jpg',
         ]);
         $beers =Beer::create([
@@ -39,6 +41,7 @@ class BeersTableSeeder extends Seeder
             'category_id' => '2',
             'country_id' => '1',
             'tag_id' => '1',
+            'status'=>'1',
             'image' => '1552088698.jpg',
         ]);
     }

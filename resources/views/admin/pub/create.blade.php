@@ -44,6 +44,11 @@
                                         <label for="image">Image</label>
                                         <input type="file" name="image" id="image" class="form-control">
                                     </div>
+                                    <div class="form-group">
+                                        <label class="switch">
+                                            <input type="checkbox" name="status"> Published
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <a href="{{ route('pub.index') }}" class="btn btn-warning">Cancel</a>

@@ -19,13 +19,11 @@ class PubController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //$beer = Beer::all()->paginate(3);
-        //return view('admin.beer.index',compact('beer'));
-        //$data = Beer::all();
+
         $data = Pub::all();
         $count = Pub::onlyTrashed()->get();
         return view( 'admin.pub.index', compact( 'data' ,'count') );
-        //  ->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
+
     }
 
     /**
@@ -47,13 +45,18 @@ class PubController extends Controller
      */
     public function store( Request $request ) {
         $request->validate( [
-            'name'  => 'required',
+            'name' => 'required',
             'description'     =>  'required',
             'category_id'     =>  'required',
             'image' => 'image'
         ] );
 
         $image = $request->file( 'image' );
+        if(isset($request->status)){
+            $status = true;
+        }else{
+            $status = false;
+        }
 
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
         $image->move( public_path( 'images' ), $new_name );
@@ -61,6 +64,7 @@ class PubController extends Controller
             'name'        => $request->name,
             'description' => $request->description,
             'category_id' => $request->category_id,
+            'status'       => $status,
             'image'       => $new_name
         ];
 
@@ -77,8 +81,6 @@ class PubController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show( $id ) {
-        // $beer = beer::find($id);
-        //return view('admin.beer.show', compact('beer'));
 
         $data       = Pub::findOrFail( $id );
         $categories = PubCategory::all();
@@ -94,10 +96,6 @@ class PubController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit( $id ) {
-        //$beer = beer::find($id);
-        //$categories = Category::all();
-
-        //return view('admin.beer.edit', compact('beer'));
 
         $data       = Pub::findOrFail( $id );
         $categories = PubCategory::all();
@@ -116,13 +114,10 @@ class PubController extends Controller
     public function update( Request $request, $id ) {
         $image_name = $request->hidden_image;
         $image      = $request->file( 'image' );
-        if ( $image != '' )  // here is the if part when you dont want to update the image required
+        if ( $image != '' )
         {
             $request->validate( [
                 'name'  => 'required',
-                'description'     =>  'required',
-                'category_id'     =>  'required',
-                'image' => 'image'
             ] );
 
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -131,15 +126,23 @@ class PubController extends Controller
         {
             $request->validate( [
                 'name' => 'required',
-                //'description'     =>  'required',
-                //'category_id'     =>  'required',
+                'description'     =>  'required',
+                'category_id'     =>  'required',
+                'image' => 'image'
             ] );
+        }
+
+        if(isset($request->status)){
+            $status = true;
+        }else{
+            $status = false;
         }
 
         $input_data = [
             'name'        => $request->name,
             'description' => $request->description,
             'category_id' => $request->category_id,
+            'status'       => $status,
             'image'       => $image_name
         ];
 
@@ -167,8 +170,6 @@ class PubController extends Controller
         $data = Pub::onlyTrashed()->get();
 
         return view( 'admin/pub/trashed', compact( 'data'));
-
-        //return view('admin.beer.trashed')->with('data',$data);
     }
 
 
@@ -189,7 +190,6 @@ class PubController extends Controller
 
         $post->restore();
 
-        //return redirect()->route('beer');
         return redirect( 'admin/pub' );
     }
 }

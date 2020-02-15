@@ -12,7 +12,7 @@ class PubController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $data = Pub::latest()->paginate( 10 );
+        $data = Pub::latest()->where('status',1)->paginate( 10 );
 
         return view( 'pub.index', compact( 'data' ) );
     }

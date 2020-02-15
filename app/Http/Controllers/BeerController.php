@@ -11,7 +11,7 @@ class BeerController extends Controller
 
     public function index()
     {
-        $data = Beer::latest()->paginate(6);
+        $data = Beer::latest()->where('status',1)->paginate(6);
         return view('beer.index', compact('data'));
     }
 

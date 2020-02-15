@@ -2,6 +2,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
+            <?php
+           // dd($data );
+            ?>
+
             @foreach($data as $beer)
                 <div class="col-md-3">
                     <div class="card">

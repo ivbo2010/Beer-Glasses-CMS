@@ -76,6 +76,11 @@
                                             <input type="hidden" name="hidden_image" value="{{ $data->image }}" />
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="switch">
+                                            <input type="checkbox" name="status" {{ $data->status ? 'checked' : '' }}> Published
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <a href="{{ route('beer.index') }}" class="btn btn-warning">Cancel</a>

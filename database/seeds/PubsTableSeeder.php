@@ -19,6 +19,7 @@ class PubsTableSeeder extends Seeder
             'name' => 'Five Corners',
             'description' => 'Five Corners description',
             'category_id' => '1',
+            'status'=>'1',
             'image' => '192574109.jpg',
         ]);
     }

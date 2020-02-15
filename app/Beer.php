@@ -18,7 +18,8 @@ class Beer extends Model implements Searchable {
         'category_id',
         'country_id',
         'tag_id',
-        'image'
+        'image',
+        'status',
     ];
 
     protected $dates =['deleted_at'];

@@ -54,6 +54,11 @@
                                             <input type="file" name="image" id="image" class="form-control">
                                             <input type="hidden" name="hidden_image" value="{{ $data->image }}" />
                                         </div>
+                                        <div class="form-group">
+                                            <label class="switch">
+                                                <input type="checkbox" name="status" {{ $data->status ? 'checked' : '' }}> Published
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

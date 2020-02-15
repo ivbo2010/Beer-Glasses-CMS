@@ -33,6 +33,7 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Category</th>
+                                    <th>Status</th>
                                     <th width="15%">Action</th>
                                 </tr>
                                 </thead>
@@ -46,6 +47,7 @@
                                         <td>{{ $beer->name }}</td>
                                         <td>{!! $beer->description !!}</td>
                                         <td>{{$beer->category['name']}}</td>
+                                        <td>{{ ($beer->status == 1) ? "Publishes" : "Unpublished" }}</td>
                                         <td>
                                             <form action="{{ route('pub.destroy', $beer->id) }}" method="post">
                                                 <a href="{{ route('pub.show', $beer->id) }}" class="btn btn-sm btn-warning"><span class="fa fa-eye"></span></a>

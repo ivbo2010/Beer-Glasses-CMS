@@ -21,14 +21,12 @@ class BeerController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //$beer = Beer::all()->paginate(3);
-        //return view('admin.beer.index',compact('beer'));
-        //$data = Beer::all();
+
         $data = Beer::all();
         $counts = Beer::count();
         $count = Beer::onlyTrashed()->get();
         return view( 'admin.beer.index', compact( 'data','counts' ,'count') );
-          //  ->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
+
     }
 
     /**
@@ -61,6 +59,12 @@ class BeerController extends Controller {
             'image' => 'image'
         ] );
 
+        if(isset($request->status)){
+            $status = true;
+        }else{
+            $status = false;
+        }
+
         $image = $request->file( 'image' );
 
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -72,6 +76,7 @@ class BeerController extends Controller {
             'category_id' => $request->category_id,
             'country_id'  => $request->country_id,
             'tag_id'      => $request->tag_id,
+            'status'      => $status,
             'image'       => $new_name
         ];
 
@@ -107,11 +112,6 @@ class BeerController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit( $id ) {
-        //$beer = beer::find($id);
-        //$categories = Category::all();
-
-        //return view('admin.beer.edit', compact('beer'));
-
         $data       = Beer::findOrFail( $id );
         $categories = Category::all();
         $countries  = Country::all();
@@ -135,26 +135,27 @@ class BeerController extends Controller {
         {
             $request->validate( [
                 'name'  => 'required',
-                //'description'     =>  'required',
-                //'qty'     =>  'required',
-                //'category_id'     =>  'required',
-                //'country_id'     =>  'required',
-                //'tag_id'     =>  'required',
-                'image' => 'image'
             ] );
 
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
             $image->move( public_path( 'images' ), $image_name );
-        } else  // this is the else part when you dont want to update the image not required
+        } else
         {
             $request->validate( [
                 'name' => 'required',
-                //'description'     =>  'required',
-                //'qty'     =>  'required',
-                //'category_id'     =>  'required',
-                //'country_id'     =>  'required',
-                //'tag_id'     =>  'required',
+                'description'     =>  'required',
+                'qty'     =>  'required',
+                'category_id'     =>  'required',
+                'country_id'     =>  'required',
+                'tag_id'     =>  'required',
+                'image' => 'image'
             ] );
+        }
+
+        if(isset($request->status)){
+            $status = true;
+        }else{
+            $status = false;
         }
 
         $input_data = [
@@ -164,6 +165,7 @@ class BeerController extends Controller {
             'category_id' => $request->category_id,
             'country_id'  => $request->country_id,
             'tag_id'      => $request->tag_id,
+            'status'      => $status,
             'image'       => $image_name
         ];
 
@@ -186,34 +188,36 @@ class BeerController extends Controller {
         return redirect( 'admin/beer' )->with( 'error', 'Beer Deleted Successfully ' );
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function trashed(){
 
         $data = Beer::onlyTrashed()->get();
-
         return view( 'admin/beer/trashed', compact( 'data'));
-
-        //return view('admin.beer.trashed')->with('data',$data);
     }
 
-
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function kill($id)
     {
 
         $post = Beer::withTrashed()->where('id',$id)->first();
-
         $post->forceDelete();
-
         return redirect()->back();
 
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function restore($id)
     {
         $post = Beer::withTrashed()->where('id',$id)->first();
-
         $post->restore();
-
-        //return redirect()->route('beer');
         return redirect( 'admin/beer' );
     }
 }
