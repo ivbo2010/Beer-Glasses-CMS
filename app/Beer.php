@@ -5,8 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Beer extends Model implements Searchable {
+
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'description',
@@ -17,6 +21,7 @@ class Beer extends Model implements Searchable {
         'image'
     ];
 
+    protected $dates =['deleted_at'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

@@ -23,7 +23,8 @@ class PubController extends Controller
         //return view('admin.beer.index',compact('beer'));
         //$data = Beer::all();
         $data = Pub::all();
-        return view( 'admin.pub.index', compact( 'data' ) );
+        $count = Pub::onlyTrashed()->get();
+        return view( 'admin.pub.index', compact( 'data' ,'count') );
         //  ->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
     }
 
@@ -159,5 +160,36 @@ class PubController extends Controller
         $data->delete();
 
         return redirect( 'admin/pub' )->with( 'error', 'Pub Deleted Successfully ' );
+    }
+
+    public function trashed(){
+
+        $data = Pub::onlyTrashed()->get();
+
+        return view( 'admin/pub/trashed', compact( 'data'));
+
+        //return view('admin.beer.trashed')->with('data',$data);
+    }
+
+
+    public function kill($id)
+    {
+
+        $post = Pub::withTrashed()->where('id',$id)->first();
+
+        $post->forceDelete();
+
+        return redirect()->back();
+
+    }
+
+    public function restore($id)
+    {
+        $post = Pub::withTrashed()->where('id',$id)->first();
+
+        $post->restore();
+
+        //return redirect()->route('beer');
+        return redirect( 'admin/pub' );
     }
 }

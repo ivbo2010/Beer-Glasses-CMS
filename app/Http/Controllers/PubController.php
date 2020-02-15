@@ -14,7 +14,7 @@ class PubController extends Controller {
     public function index() {
         $data = Pub::latest()->paginate( 10 );
 
-        return view( 'pub', compact( 'data' ) );
+        return view( 'pub.index', compact( 'data' ) );
     }
 
     /**
@@ -25,6 +25,7 @@ class PubController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show( $id ) {
-        //
+        $data = Pub::findOrFail($id);
+        return view('pub.show', compact('data'));
     }
 }
