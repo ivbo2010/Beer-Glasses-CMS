@@ -44,7 +44,7 @@
                                             <img src="{{ URL::to('/') }}/images/{{ $beer->image }}" width="60" height="50" />
                                         </td>
                                         <td>{{ $beer->name }}</td>
-                                        <td>{{ $beer->description }}</td>
+                                        <td>{!! $beer->description !!}</td>
                                         <td>{{$beer->category['name']}}</td>
                                         <td>
                                             <form action="{{ route('pub.destroy', $beer->id) }}" method="post">
