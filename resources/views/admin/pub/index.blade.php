@@ -15,13 +15,17 @@
                         </div>
                         <div class="col-md-12">
                             <div align="left">
+                                @if(!$count->isEmpty())
+                                    <a href="{{ route('pub.trashed') }}" class="btn btn-danger">
+                                        <span class="fa fa-plus-circle"> Trash Beer</span></a>
+                                @endif
                                 <a href="{{ route('pub.create') }}" class="btn btn-info">
                                     <span class="fa fa-plus-circle"> Pub</span></a>
                             </div>
                             <br>
                         </div>
                         <div class="box-body">
-                            <table id="laravel_datatable" class="table table-bordered table-striped">
+                               <table id="laravel_datatable" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
                                     <th width="5%">Id</th>

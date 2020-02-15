@@ -1,53 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <style>
-        .container {
-            padding: 0.5%;
-        }
-    </style>
-    <div class="container">
-        <h2 class="alert text-center "><span class="fas fa-beer"> Beer collection</span></h2>
-
-    </div>
-
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-
-
-                <!-- Form Name -->
-                <legend>Tag <span class="fa fa"> {{ $data->name }} </span></legend>
-
-
-                <div class="jumbotron text-center">
-
-                    <div align="center">
-                        <h3><span>Tag :</span> <b>{{ $data->name }} </b></h3>
+                <div class="stunning-header stunning-header-bg-lightviolet">
+                    <div class="stunning-header-content">
+                        <h1 class="stunning-header-title">Tag: {{ $data->name }}</h1>
                     </div>
-                    <div class="container">
-                        <div class="row">
-
-                           {{-- @foreach($data->beers()->paginate(3) as $post)--}}
-                            @foreach($data->beers as $post)
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
-                                            <img src="{{ URL::to('/') }}/images/{{ $post->image }}"  class="img-fluid" alt="our case">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        @foreach($data->beers as $post)
+                            <div class="col-sm-6 col-md-3">
+                                <div class="shop__thumb">
+                                    <a href="/beer/{{ $post->id}}">
+                                        <div class="shop-thumb__img">
+                                            <img src="{{ URL::to('/') }}/images/{{ $post->image }}" class="img-fluid" alt="our case">
                                         </div>
-                                        <a href="/beer/{{ $post->id}}"><h6 class="case-item__title">{{ $post->name}}</h6></a>
-                                    </div>
+                                        <h5 class="shop-thumb__title">
+                                            {{ $post->name}}
+                                        </h5>
+                                    </a>
                                 </div>
-
-                            @endforeach
-
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 @endsection
-

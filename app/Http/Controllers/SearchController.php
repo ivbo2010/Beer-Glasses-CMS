@@ -8,6 +8,7 @@ use App\Beer;
 use App\Category;
 use App\Tag;
 use App\Country;
+use App\Pub;
 
 class SearchController extends Controller
 {
@@ -35,6 +36,7 @@ class SearchController extends Controller
        if($searchterm){
            $searchResults = (new Search())
                ->registerModel(\App\Beer::class, 'name','description')
+               ->registerModel(\App\Pub::class, 'name','description')
                ->registerModel(\App\Category::class, 'name')
                ->registerModel(\App\Country::class, 'name')
                ->registerModel(\App\Tag::class, 'name')

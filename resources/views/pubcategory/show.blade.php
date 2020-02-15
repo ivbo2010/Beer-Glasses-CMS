@@ -2,35 +2,37 @@
 
 @section('content')
 
-<style>
-        .container{
-            padding:0.5%;
-        }
-    </style>
-<div class="container">
-<h2 class="alert text-center "><span class="fas fa-beer"> Beer collection</span></h2>
 
-</div>
-
-<div class="container">
-<div class="row">
-<div class="col-md-10 ">
-<form class="form-horizontal">
-<fieldset>
-
-<!-- Form Name -->
-<legend>Pub Category <span class="fa fa"> {{ $data->name }} </span></legend>
-
-
-
-<div class="jumbotron text-center">
- <div align="center">
- <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="rounded-circle" width='100' height="100" />
-<div align="center">
-<h3><span >Category :</span> <b>{{ $data->name }} </b> </h3>
-</div>
-<a href="/" class="btn bg-primary" style="color:white">Cancel</a>
-
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="stunning-header stunning-header-bg-lightviolet">
+                    <div class="stunning-header-content">
+                        <h1 class="stunning-header-title">Category: {{ $data->name }}</h1>
+                    </div>
+                </div>
+                <div align="center">
+                    <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="" width='100' height="100" />
+                </div>
+                <div class="container">
+                    <div class="row">
+                        @foreach($data->pub as $post)
+                            <div class="col-sm-6 col-md-3">
+                                <div class="shop__thumb">
+                                    <a href="/pub/{{ $post->id}}">
+                                        <div class="shop-thumb__img">
+                                            <img src="{{ URL::to('/') }}/images/{{ $post->image }}" class="img-fluid" alt="our case">
+                                        </div>
+                                        <h5 class="shop-thumb__title">
+                                            {{ $post->name}}
+                                        </h5>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
-

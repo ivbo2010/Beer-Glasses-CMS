@@ -22,6 +22,7 @@ class CreateBeersTable extends Migration
 			$table->string('country_id');
 			$table->string('tag_id');
             $table->string('image');
+            $table->SoftDeletes();
             $table->timestamps();
         });
     }

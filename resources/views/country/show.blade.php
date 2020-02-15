@@ -2,30 +2,23 @@
 
 @section('content')
 
-    <style>
-        .container {
-            padding: 0.5%;
-        }
-    </style>
-    <div class="container">
-        <h2 class="alert text-center "><span class="fas fa-beer"> Beer collection</span></h2>
-
-    </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-10 ">
-
-
-                <!-- Form Name -->
-                <legend>Country <span class="fa fa"> {{ $data->name }} </span></legend>
-
+            <div class="col-md-12">
+                <div class="stunning-header stunning-header-bg-lightviolet">
+                    <div class="stunning-header-content">
+                        <h1 class="stunning-header-title">Country: {{ $data->name }}</h1>
+                    </div>
+                </div>
                 <div class="container">
                     <div class="row">
-
-
                         @foreach($data->beers as $post)
+<<<<<<< HEAD
 							<div class="col-sm-6 col-md-3">
+=======
+                            <div class="col-sm-6 col-md-3">
+>>>>>>> master
                                 <div class="shop__thumb">
                                     <a href="/beer/{{ $post->id}}">
                                         <div class="shop-thumb__img">
@@ -38,13 +31,9 @@
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 @endsection
-

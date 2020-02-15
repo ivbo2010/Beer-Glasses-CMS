@@ -14,13 +14,12 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::latest()->paginate(10);
-        return view('category.index', compact('data'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('category.index', compact('data'));
     }
 
-    
 
-    
+
+
     /**
      * Display the specified resource.
      *
@@ -31,17 +30,9 @@ class CategoryController extends Controller
     {
         $data = Category::findOrFail($id);
         return view('category.show', compact('data'));
-		
-		
+
+
     }
-	
-	 /*  public function show(Category $category)
-	  {
-		 $category= $category->posts;
-		return view('post.computer-id',compact('category'));
-	  }
-	  */
 
 
-    
 }

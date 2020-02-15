@@ -16,6 +16,10 @@
                 <div class="card-body">
                     <div class="col-md-12">
                         <div align="left">
+                            @if(!$count->isEmpty())
+                                <a href="{{ route('beer.trashed') }}" class="btn btn-danger">
+                                    <span class="fa fa-plus-circle"> Trash Beer</span></a>
+                            @endif
                             <a href="{{ route('beer.create') }}" class="btn btn-info">
                                 <span class="fa fa-plus-circle"> Beer glass</span></a>
                         </div>
@@ -59,7 +63,8 @@
                                             @method('DELETE')
 
                                                 <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$beer->id}})"
-                                                    data-target="#DeleteModal" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                                    data-target="#DeleteModal" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                </a>
 
                                         @endcan
                                         </form>

@@ -14,8 +14,7 @@ class TagController extends Controller
     public function index()
     {
         $data = Tag::latest()->paginate(5);
-        return view('tag.index', compact('data'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('tag.index', compact('data'));
     }
 
 

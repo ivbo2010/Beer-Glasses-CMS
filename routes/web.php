@@ -33,7 +33,7 @@ Route::resource('beer', 'BeerController');
 Route::resource('category', 'CategoryController');
 Route::resource('country', 'CountryController');
 Route::resource('tag', 'TagController');
-Route::resource('pub', 'PubController@index');
+Route::resource('pub', 'PubController');
 Route::resource('pubcategory', 'PubCategoryController');
 //Search
 Route::get('/search', 'SearchController@index')->name('search.index');
@@ -76,6 +76,3 @@ Route::resource('admin/country', 'Admin\CountryController');
 Route::resource('admin/tag', 'Admin\TagController');
 Route::resource('admin/pub', 'Admin\PubController');
 Route::resource('admin/pubcategory', 'Admin\PubCategoryController');
-
-
-

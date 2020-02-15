@@ -10,6 +10,7 @@ use App\Country;
 use App\Tag;
 
 class BeerController extends Controller {
+
     public function __construct() {
         $this->middleware( 'auth' );
     }
@@ -25,7 +26,8 @@ class BeerController extends Controller {
         //$data = Beer::all();
         $data = Beer::all();
         $counts = Beer::count();
-        return view( 'admin.beer.index', compact( 'data','counts' ) );
+        $count = Beer::onlyTrashed()->get();
+        return view( 'admin.beer.index', compact( 'data','counts' ,'count') );
           //  ->with( 'i', ( request()->input( 'page', 1 ) - 1 ) * 5 );
     }
 
@@ -182,5 +184,36 @@ class BeerController extends Controller {
         $data->delete();
 
         return redirect( 'admin/beer' )->with( 'error', 'Beer Deleted Successfully ' );
+    }
+
+    public function trashed(){
+
+        $data = Beer::onlyTrashed()->get();
+
+        return view( 'admin/beer/trashed', compact( 'data'));
+
+        //return view('admin.beer.trashed')->with('data',$data);
+    }
+
+
+    public function kill($id)
+    {
+
+        $post = Beer::withTrashed()->where('id',$id)->first();
+
+        $post->forceDelete();
+
+        return redirect()->back();
+
+    }
+
+    public function restore($id)
+    {
+        $post = Beer::withTrashed()->where('id',$id)->first();
+
+        $post->restore();
+
+        //return redirect()->route('beer');
+        return redirect( 'admin/beer' );
     }
 }
