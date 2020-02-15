@@ -42,9 +42,13 @@
                     @foreach($data as $beer)
                         <tbody>
                         <tr class="text-center">
-                            <td><img src="{{ URL::to('/') }}/images/{{ $beer->image }}" width="60" height="50"/></td>
+                            <td>
+                                @if($beer->image )
+                                <img src="{{ URL::to('/') }}/images/{{ $beer->image }}" width="60" height="50"/>
+                            @endif
+                            </td>
                             <td>{{ $beer->name }}</td>
-                            <td>{{ $beer->description }}</td>
+                            <td>{!! $beer->description !!}</td>
                             <td>{{ $beer->qty }}</td>
                             <td>{{$beer->category['name']}}</td>
                             <td>{{ $beer->country['name'] }}</td>

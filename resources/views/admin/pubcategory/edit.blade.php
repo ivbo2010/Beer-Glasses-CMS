@@ -22,7 +22,9 @@
                             @method('PUT')
                             <div class="form-row">
                                 <div class="form-group col-md-3">
+                                    @if($data->image )
                                     <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="img-fluid" />
+                                    @endif
                                     <input type="hidden" name="hidden_image" value="{{ $data->image }}" />
                                 </div>
                                 <div class="col-md-9">

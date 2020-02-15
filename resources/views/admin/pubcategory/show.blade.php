@@ -15,7 +15,9 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <h2>{{ $data->name }}</h2>
+                                @if($data->image )
                                 <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="img-fluid" />
+                                @endif
                                 <div class="m-3">
                                     <a href="{{ route('pubcategory.index') }}" class="btn bg-primary" style="color:white">Cancel</a>
                                 </div>

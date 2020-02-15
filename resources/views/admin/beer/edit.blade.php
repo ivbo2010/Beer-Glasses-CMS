@@ -68,9 +68,11 @@
                                             class="form-control">{{ $data->description }}</textarea>
                                     </div>
                                     <div class="row">
+                                        @if($data->image )
                                         <div class="form-group col-md-2">
                                             <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="img-fluid" />
                                         </div>
+                                        @endif
                                         <div class="form-group col-md-10">
                                             <input type="file" name="image" id="image" class="form-control">
                                             <input type="hidden" name="hidden_image" value="{{ $data->image }}" />

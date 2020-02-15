@@ -50,8 +50,12 @@ class CategoryController extends Controller
 
         $image = $request->file('image');
 
-        $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $new_name);
+        if ($image) {
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $new_name);
+        } else {
+            $new_name = '';
+        }
         $input_data = array(
             'name'       =>   $request->name,
             'image'            =>   $new_name

@@ -57,9 +57,13 @@ class PubController extends Controller
         }else{
             $status = false;
         }
+        if ($image) {
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $new_name);
+        } else {
+            $new_name = '';
+        }
 
-        $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        $image->move( public_path( 'images' ), $new_name );
         $input_data = [
             'name'        => $request->name,
             'description' => $request->description,
@@ -117,7 +121,10 @@ class PubController extends Controller
         if ( $image != '' )
         {
             $request->validate( [
-                'name'  => 'required',
+                'name' => 'required',
+                'description'     =>  'required',
+                'category_id'     =>  'required',
+                'image' => 'image'
             ] );
 
             $image_name = rand() . '.' . $image->getClientOriginalExtension();

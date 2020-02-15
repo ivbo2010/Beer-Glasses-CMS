@@ -9,10 +9,12 @@ use App\Category;
 use App\Country;
 use App\Tag;
 
-class BeerController extends Controller {
+class BeerController extends Controller
+{
 
-    public function __construct() {
-        $this->middleware( 'auth' );
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     /**
@@ -20,12 +22,13 @@ class BeerController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
 
         $data = Beer::all();
         $counts = Beer::count();
         $count = Beer::onlyTrashed()->get();
-        return view( 'admin.beer.index', compact( 'data','counts' ,'count') );
+        return view('admin.beer.index', compact('data', 'counts', 'count'));
 
     }
 
@@ -34,11 +37,12 @@ class BeerController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         $categories = Category::all();
-        $countries  = Country::all();
-        $tags       = Tag::all();
-        return view( 'admin.beer.create' )->withCategories( $categories )->withCountries( $countries )->withTags( $tags );
+        $countries = Country::all();
+        $tags = Tag::all();
+        return view('admin.beer.create')->withCategories($categories)->withCountries($countries)->withTags($tags);
     }
 
     /**
@@ -48,41 +52,48 @@ class BeerController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function store( Request $request ) {
-        $request->validate( [
-            'name'  => 'required',
-            'description'     =>  'required',
-            'qty'     =>  'required',
-            'category_id'     =>  'required',
-            'country_id'     =>  'required',
-            'tag_id'     =>  'required',
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'qty' => 'required',
+            'category_id' => 'required',
+            'country_id' => 'required',
+            'tag_id' => 'required',
             'image' => 'image'
-        ] );
+        ]);
 
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = true;
-        }else{
+        } else {
             $status = false;
         }
 
-        $image = $request->file( 'image' );
+        $image = $request->file('image');
+        if ($image) {
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $new_name);
+        } else {
+            $new_name = '';
+        }
 
-        $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        $image->move( public_path( 'images' ), $new_name );
+
         $input_data = [
-            'name'        => $request->name,
+            'name' => $request->name,
             'description' => $request->description,
-            'qty'         => $request->qty,
+            'qty' => $request->qty,
             'category_id' => $request->category_id,
-            'country_id'  => $request->country_id,
-            'tag_id'      => $request->tag_id,
-            'status'      => $status,
-            'image'       => $new_name
+            'country_id' => $request->country_id,
+            'tag_id' => $request->tag_id,
+            'status' => $status,
+            'image' => $new_name
         ];
 
-        Beer::create( $input_data );
 
-        return redirect( 'admin/beer' )->with( 'Success', 'Employee Inserted Successfully' );
+        Beer::create($input_data);
+
+        return redirect('admin/beer')->with('Success', 'Employee Inserted Successfully');
     }
 
     /**
@@ -92,16 +103,17 @@ class BeerController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function show( $id ) {
+    public function show($id)
+    {
         // $beer = beer::find($id);
         //return view('admin.beer.show', compact('beer'));
 
-        $data       = Beer::findOrFail( $id );
+        $data = Beer::findOrFail($id);
         $categories = Category::all();
-        $countries  = Country::all();
-        $tags       = Tag::all();
+        $countries = Country::all();
+        $tags = Tag::all();
 
-        return view( 'admin.beer.show', compact( 'data', 'categories', 'countries', 'tags' ) );
+        return view('admin.beer.show', compact('data', 'categories', 'countries', 'tags'));
     }
 
     /**
@@ -111,13 +123,14 @@ class BeerController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id ) {
-        $data       = Beer::findOrFail( $id );
+    public function edit($id)
+    {
+        $data = Beer::findOrFail($id);
         $categories = Category::all();
-        $countries  = Country::all();
-        $tags       = Tag::all();
+        $countries = Country::all();
+        $tags = Tag::all();
 
-        return view( 'admin.beer.edit', compact( 'data', 'categories', 'countries', 'tags' ) );
+        return view('admin.beer.edit', compact('data', 'categories', 'countries', 'tags'));
     }
 
     /**
@@ -128,50 +141,55 @@ class BeerController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function update( Request $request, $id ) {
+    public function update(Request $request, $id)
+    {
         $image_name = $request->hidden_image;
-        $image      = $request->file( 'image' );
-        if ( $image != '' )  // here is the if part when you dont want to update the image required
-        {
-            $request->validate( [
-                'name'  => 'required',
-            ] );
+        $image = $request->file('image');
+        if ($image != '') {
+            $request->validate([
+                'name' => 'required',
+                'description' => 'required',
+                'qty' => 'required',
+                'category_id' => 'required',
+                'country_id' => 'required',
+                'tag_id' => 'required',
+                'image' => 'image'
+            ]);
 
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
-            $image->move( public_path( 'images' ), $image_name );
-        } else
-        {
-            $request->validate( [
+            $image->move(public_path('images'), $image_name);
+        } else {
+            $request->validate([
                 'name' => 'required',
-                'description'     =>  'required',
-                'qty'     =>  'required',
-                'category_id'     =>  'required',
-                'country_id'     =>  'required',
-                'tag_id'     =>  'required',
+                'description' => 'required',
+                'qty' => 'required',
+                'category_id' => 'required',
+                'country_id' => 'required',
+                'tag_id' => 'required',
                 'image' => 'image'
-            ] );
+            ]);
         }
 
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = true;
-        }else{
+        } else {
             $status = false;
         }
 
         $input_data = [
-            'name'        => $request->name,
+            'name' => $request->name,
             'description' => $request->description,
-            'qty'         => $request->qty,
+            'qty' => $request->qty,
             'category_id' => $request->category_id,
-            'country_id'  => $request->country_id,
-            'tag_id'      => $request->tag_id,
-            'status'      => $status,
-            'image'       => $image_name
+            'country_id' => $request->country_id,
+            'tag_id' => $request->tag_id,
+            'status' => $status,
+            'image' => $image_name
         ];
 
-        Beer::whereId( $id )->update( $input_data );
+        Beer::whereId($id)->update($input_data);
 
-        return redirect( 'admin/beer' )->with( 'Success', 'Beer Updated Successfully' );
+        return redirect('admin/beer')->with('Success', 'Beer Updated Successfully');
     }
 
     /**
@@ -181,20 +199,22 @@ class BeerController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id ) {
-        $data = Beer::findOrFail( $id );
+    public function destroy($id)
+    {
+        $data = Beer::findOrFail($id);
         $data->delete();
 
-        return redirect( 'admin/beer' )->with( 'error', 'Beer Deleted Successfully ' );
+        return redirect('admin/beer')->with('error', 'Beer Deleted Successfully ');
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function trashed(){
+    public function trashed()
+    {
 
         $data = Beer::onlyTrashed()->get();
-        return view( 'admin/beer/trashed', compact( 'data'));
+        return view('admin/beer/trashed', compact('data'));
     }
 
     /**
@@ -204,7 +224,7 @@ class BeerController extends Controller {
     public function kill($id)
     {
 
-        $post = Beer::withTrashed()->where('id',$id)->first();
+        $post = Beer::withTrashed()->where('id', $id)->first();
         $post->forceDelete();
         return redirect()->back();
 
@@ -216,8 +236,8 @@ class BeerController extends Controller {
      */
     public function restore($id)
     {
-        $post = Beer::withTrashed()->where('id',$id)->first();
+        $post = Beer::withTrashed()->where('id', $id)->first();
         $post->restore();
-        return redirect( 'admin/beer' );
+        return redirect('admin/beer');
     }
 }

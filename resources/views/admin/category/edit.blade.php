@@ -31,7 +31,9 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <div class="form-group col-md-2">
+                                        @if($data->image )
                                         <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="img-fluid" />
+                                        @endif
                                         <input type="hidden" name="hidden_image" value="{{ $data->image }}" />
                                     </div>
                                 </div>

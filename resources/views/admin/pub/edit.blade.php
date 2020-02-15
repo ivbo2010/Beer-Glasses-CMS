@@ -48,7 +48,9 @@
                                     <label for="category">Image</label>
                                     <div class="row">
                                         <div class="form-group col-md-2">
+                                            @if($data->image )
                                             <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="img-fluid" />
+                                                @endif
                                         </div>
                                         <div class="form-group col-md-10">
                                             <input type="file" name="image" id="image" class="form-control">

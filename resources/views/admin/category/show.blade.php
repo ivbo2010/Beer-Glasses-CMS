@@ -10,7 +10,9 @@
                         <h2 class="left"> Category : {{$data->name}}</h2>
                         <div class="row">
                             <div class="col-md-3">
+                                @if($data->image )
                                 <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="img-fluid" />
+                                @endif
                                 <div class="m-2">
                                     <a href="{{ route('category.index') }}" class="btn bg-primary">Cancel</a>
                                 </div>

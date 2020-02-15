@@ -34,7 +34,9 @@
                                     <tr>
                                         <td>{{ $beer->id }}</td>
                                         <td>
+                                            @if($beer->image )
                                             <img src="{{ URL::to('/') }}/images/{{ $beer->image }}" width="60" height="50" />
+                                                @endif
                                         </td>
                                         <td>{{ $beer->name }}</td>
                                         <td>

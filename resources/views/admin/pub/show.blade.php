@@ -13,7 +13,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-2">
+                                @if($data->image )
                                 <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="img-fluid" />
+                                    @endif
                             </div>
                             <div class="col-md-10">
                                 <label>Title: </label>
