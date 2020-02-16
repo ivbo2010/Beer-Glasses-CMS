@@ -5,12 +5,14 @@
             @foreach($data as $beer)
                 <div class="col-md-3">
                     <div class="card">
-                        <img class="card-img-top" src="{{ URL::to('/') }}/images/{{ $beer->image }}"
-                             alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ $beer->name }}</h4>
-                             <a href="/category/{{ $beer->id }}" class="btn btn-primary">Show</a>
-                        </div>
+                        <a href="/category/{{ $beer->id }}">
+                            <div class="card-img">
+                                <img src="{{ URL::to('/') }}/images/{{ $beer->image }}" class="img-fluid" alt="...">
+                            </div>
+                            <div class="card-header text-center text-black-50">
+                                <h4>{{ $beer->name }}</h4>
+                            </div>
+                        </a>
                     </div>
                 </div>
             @endforeach

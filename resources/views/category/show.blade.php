@@ -16,16 +16,16 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                        @foreach($data->beers as $post)
+                        @foreach($data->beers as $beer)
                             <div class="col-sm-6 col-md-3">
                                 <div class="shop__thumb">
-                                    <a href="/beer/{{ $post->id}}">
-                                        <div class="shop-thumb__img">
-                                            <img src="{{ URL::to('/') }}/images/{{ $post->image }}" class="img-fluid" alt="our case">
+                                    <a href="/beer/{{ $beer->id }}">
+                                        <div class="card-img">
+                                            <img src="{{ URL::to('/') }}/images/{{ $beer->image }}" class="img-fluid" alt="...">
                                         </div>
-                                        <h5 class="shop-thumb__title">
-                                            {{ $post->name}}
-                                        </h5>
+                                        <div class="card-header text-center text-black-50">
+                                            <h4>{{ $beer->name }}</h4>
+                                        </div>
                                     </a>
                                 </div>
                             </div>

@@ -26,9 +26,11 @@
                                                         <img src="{{ URL::to('/') }}/images/{{ $searchResult->searchable->image }}" class="img-fluid" alt="..." />
                                                     </div>
                                                 @endif
-                                                <h5 class="container">
-                                                    {{ $searchResult->title }}
-                                                </h5>
+                                                    <div class="card-header text-center text-black-50">
+                                                        <h4> {{ $searchResult->title }}</h4>
+                                                    </div>
+
+
                                             </a>
                                         </div>
                                     </div>
