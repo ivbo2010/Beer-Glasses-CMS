@@ -9,8 +9,7 @@ class SettingController extends Controller
 {
     public function index()
     {
-        $sdata = Setting::all();
-        return view('setting', compact('sdata'));
+        $settings = Setting::all();
+        return view('setting', compact('settings'));
     }
-
 }
