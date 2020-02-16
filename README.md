@@ -7,6 +7,12 @@
 - User  (create )
 ##### Editor
 - Super Simple WYSIWYG Editor on Bootstrap <a href="https://summernote.org/">Summernote</a>
-
+#### API
+##### Beers
+- For Beers - /api/beers
+- Detail page beer - /api/beers/1
+##### Pubs
+- For Pubs - /api/pubs
+- Detail page  pub - /api/pubs/1
 
 
