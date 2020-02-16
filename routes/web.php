@@ -72,3 +72,4 @@ Route::resource('admin/country', 'Admin\CountryController');
 Route::resource('admin/tag', 'Admin\TagController');
 Route::resource('admin/pub', 'Admin\PubController');
 Route::resource('admin/pubcategory', 'Admin\PubCategoryController');
+
