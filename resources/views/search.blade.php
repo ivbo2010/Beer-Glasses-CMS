@@ -3,12 +3,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10">
-                {{--                <form method="get" action="{{ route('search.result') }}" class="form-inline mr-auto">
-                                    <input type="text" name="query" value="{{ isset($searchterm) ? $searchterm : ''  }}" class="form-control col-sm-8"  placeholder="Search events or blog posts..." aria-label="Search">
-                                    <button class="btn aqua-gradient btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">Search</button>
-                                </form>
-                                <br>--}}
-
                 @if ( empty ( $searchResults ) )
                     <h2>Sorry, no results<b></b>.</h2>
                 @endif
@@ -25,14 +19,14 @@
                             <div class="row">
                                 @foreach($modelSearchResults as $searchResult)
                                     <div class="col-sm-6 col-md-3">
-                                        <div class="shop__thumb">
+                                        <div class="card">
                                             <a href="{{ $searchResult->url }}">
                                                 @if($searchResult->searchable->image)
                                                     <div class="shop-thumb__img">
                                                         <img src="{{ URL::to('/') }}/images/{{ $searchResult->searchable->image }}" class="img-fluid" alt="..." />
                                                     </div>
                                                 @endif
-                                                <h5 class="shop-thumb__title">
+                                                <h5 class="container">
                                                     {{ $searchResult->title }}
                                                 </h5>
                                             </a>

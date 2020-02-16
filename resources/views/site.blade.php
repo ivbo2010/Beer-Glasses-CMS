@@ -12,68 +12,78 @@
                 <div class="row">
                     @foreach($data as $beer)
                         <div class="col-sm-6 col-md-3">
-                            <div class="shop__thumb">
+                            <div class="card">
                                 <a href="/beer/{{ $beer->id }}">
-                                    <div class="shop-thumb__img">
+                                    <div class="card-img">
                                         <img src="{{ URL::to('/') }}/images/{{ $beer->image }}" class="img-fluid" alt="...">
                                     </div>
-                                    <h5 class="shop-thumb__title">
-                                        {{ $beer->name }}
-                                    </h5>
+                                    <div class="card-header text-center text-black-50">
+                                        <h4>{{ $beer->name }}</h4>
+                                    </div>
                                 </a>
                             </div>
                         </div>
 
                     @endforeach
                 </div>
+
                 {!! $data->render() !!}
-                <h2>Categories</h2>
+                    <div class="container m-3">
+                        <div class="row">
+                            <h4>Categories</h4>
+                        </div>
+                    </div>
+
                 <div class="row">
                     @foreach($category as $beer)
                         <div class="col-sm-6 col-md-3">
-                            <div class="shop__thumb">
+                            <div class="card">
                                 <a href="/category/{{ $beer->id }}">
-                                    <div class="shop-thumb__img">
+                                    <div class="card-img">
                                         <img src="{{ URL::to('/') }}/images/{{ $beer->image }}" class="img-fluid" alt="...">
                                     </div>
-                                    <h5 class="shop-thumb__title">
-                                        {{ $beer->name }}
-                                    </h5>
+                                    <div class="card-header text-center text-black-50">
+                                       <h4>{{ $beer->name }}</h4>
+                                    </div>
                                 </a>
                             </div>
                         </div>
                     @endforeach
                 </div>
-     {{--           <h2>Country</h2>
-                <div class="row">
-                    @foreach($country as $beer)
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>{{ $beer->name }}</p>
-                                    <p>
-                                        <a href=" /country/{{ $beer->id }}" class="btn btn-sm btn-warning"><span
-                                                class="fa fa-eye"></span> Show</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-                <h2>Tag</h2>
-                <div class="row">
-                    @foreach($tag as $beer)
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>{{ $beer->name }}</p>
-                                    <p>
-                                        <a href=" /tag/{{ $beer->id }}" class="btn btn-sm btn-warning"><span
-                                                class="fa fa-eye"></span> Show</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>--}}
+
+
+
+
+                    {{--           <h2>Country</h2>
+                               <div class="row">
+                                   @foreach($country as $beer)
+                                       <div class="col-md-3">
+                                           <div class="card">
+                                               <div class="card-body">
+                                                   <p>{{ $beer->name }}</p>
+                                                   <p>
+                                                       <a href=" /country/{{ $beer->id }}" class="btn btn-sm btn-warning"><span
+                                                               class="fa fa-eye"></span> Show</a></p>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   @endforeach
+                               </div>
+                               <h2>Tag</h2>
+                               <div class="row">
+                                   @foreach($tag as $beer)
+                                       <div class="col-md-3">
+                                           <div class="card">
+                                               <div class="card-body">
+                                                   <p>{{ $beer->name }}</p>
+                                                   <p>
+                                                       <a href=" /tag/{{ $beer->id }}" class="btn btn-sm btn-warning"><span
+                                                               class="fa fa-eye"></span> Show</a></p>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   @endforeach
+                               </div>--}}
             </div>
         </div>
     </div>

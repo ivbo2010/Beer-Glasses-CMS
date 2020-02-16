@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Country;
+use App\Setting;
 use App\Tag;
 use Illuminate\Http\Request;
 use App\Beer;
@@ -21,7 +22,6 @@ class HomeController extends Controller
         $country = Country::latest()->paginate(8);
         $tag = Tag::latest()->paginate(8);
         return view('site', compact('data','category','country','tag'));
-
     }
 
 }

@@ -101,9 +101,9 @@ class CategoryController extends Controller
     {
 
 
-		 $image_name = $request->hidden_image;
+        $image_name = $request->hidden_image;
         $image = $request->file('image');
-        if($image != '')  // here is the if part when you dont want to update the image required
+        if($image != '')
         {
                   $request->validate([
                 'name'    =>  'required',

@@ -230,6 +230,17 @@ return [
                 ],
             ],
         ],
+        ['header' => 'SETTING'],
+        [
+            'text'    => 'Setting',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Site page',
+                    'url'  => 'admin/settings',
+                ],
+            ],
+        ],
         /*[
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
@@ -267,20 +278,8 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],*//*
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
         ],*/
+
     ],
 
     /*

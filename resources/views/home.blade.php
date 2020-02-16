@@ -10,6 +10,7 @@
                     </div>
                 @endif
                 <h1>Home frontend</h1>
+
                 <div class="row">
                     @foreach($data as $beer)
                         <div class="col-md-3">

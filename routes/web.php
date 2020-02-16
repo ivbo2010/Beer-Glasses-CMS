@@ -21,10 +21,12 @@ Auth::routes();
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function (){
     Route::resource('users', 'UsersController' , ['except'=>['show','create','store']]);
+    Route::resource('settings','SettingController')->only(['index','store']);
 });
 
 //Frontend
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('setting', 'SettingController@index')->name('setting');
 Route::resource('beer', 'BeerController');
 Route::resource('category', 'CategoryController');
 Route::resource('country', 'CountryController');
