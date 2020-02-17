@@ -26,9 +26,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#tab_3" role="tab" data-toggle="tab">About Us</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab_4" role="tab" data-toggle="tab">Address</a>
-                                </li>
                             </ul>
                             <form action="{{ route('admin.settings.store') }}" method="post"
                                   enctype="multipart/form-data" role="form">
@@ -150,9 +147,6 @@
                                                           paceholder="Place some text here">{{ $setting->about_us }}</textarea>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="tab-pane" id="tab_4">
                                         <div class="box-body">
                                             <div class="address">
                                                 <label>Address</label>
