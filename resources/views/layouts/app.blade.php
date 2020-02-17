@@ -42,10 +42,8 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                @foreach($settings as $beer)
-                    <img src="{{ URL::to('/') }}/images/{{ $beer->site_logo }}" height="30" alt="...">
-                    {{$beer->site_name}}
-                @endforeach
+                <img src="{{ URL::to('/') }}/images/{{ $settings[0]->site_logo }}" height="30" alt="...">
+                {{$settings[0]->site_name}}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
