@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-		$data = Beer::latest()->where('status',1)->paginate(8);
+		$data = Beer::latest()->where('status',1)->paginate(18);
 		$category = Category::latest()->paginate(8);
         $country = Country::latest()->paginate(8);
         $tag = Tag::latest()->paginate(8);

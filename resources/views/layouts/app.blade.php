@@ -1,112 +1,106 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <title>Hello World</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
+{{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">--}}
+<!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/css/mdb.min.css" rel="stylesheet">
-
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-
     <!-- MDB core JavaScript -->
     <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/js/mdb.min.js"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/js/mdb.min.js"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ URL::to('/') }}/images/{{ $settings[0]->site_logo }}" height="30" alt="...">
-                {{$settings[0]->site_name}}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <li>
-                        <form method="get" action="{{ route('search.result') }}" class="form-inline mr-auto">
-                            <input type="text" name="query" value="{{ isset($searchterm) ? $searchterm : ''  }}"
-                                   class="form-control col-sm-8" placeholder="Search.." aria-label="Search">
-                            <button class="btn blue waves-effect waves-light" type="submit">Search</button>
-                        </form>
-                    </li>
-                    <!-- Authentication Links -->
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="/admin/home">Dashboard</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
+    <header class="site-header">
+        <div class="site-branding">
+            <h1 class="site-title">
+                <a href="/" rel="home"><img src="{{ URL::to('/') }}/images/{{ $settings[0]->site_logo }}" height="40" alt="..."></a>
+            </h1>
+        </div>
+        <div class="left-menu">
+            <div class="menu-icon">
+                <img src="{{ asset('images/menu-open.png') }}" alt="menu">
             </div>
-
+            <div class="menu-close-icon">
+                <img src="{{ asset('images/close.png') }}" alt="menu close">
+            </div>
+        </div>
+    </header>
+    <nav class="left-navigation flex flex-column justify-content-between">
+        <div class="site-branding d-none d-lg-block ">
+            <h1 class="site-title">
+                <a href="/" rel="home">{{ $settings[0]->site_name }}</a>
+            </h1>
+        </div>
+        <ul class="main-menu flex flex-column justify-content-center">
+            <li>
+                <form method="get" action="{{ route('search.result') }}" class="form-inline mr-auto search-form">
+                    <input type="text" name="query" value="{{ isset($searchterm) ? $searchterm : ''  }}"
+                        class="form-control" placeholder="Search.." aria-label="Search">
+                    <button class="btn orange waves-effect waves-light search-button" type="submit">
+                        <i class="fas fa-search"></i></button>
+                </form>
+            </li>
+            @guest
+                <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                @if (Route::has('register'))
+                    <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                @endif
+            @else
+                <li><a href="/admin/home">Dashboard</a></li>
+                <li><a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                        style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            @endguest
+        </ul>
+        <div class="social-profiles">
+            <ul class="flex justify-content-start justify-content-lg-center align-items-center">
+                <li><a href="#"><i class="fab fa-facebook fa-2x"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram fa-2x"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter fa-2x "></i></a></li>
+                <li><a href="#"><i class="fab fa-pinterest fa-2x"></i></a></li>
+            </ul>
         </div>
     </nav>
-
-    <main class="py-4">
+    <div class="nav-bar-sep d-lg-none"></div>
+    <main>
         @yield('content')
     </main>
 </div>
+<script type='text/javascript'>
+    $(document).ready(function () {
+        $('.left-menu').on('click', function () {
+            $(this).toggleClass('close');
+            $('.left-branding').toggleClass('hide');
+            $('.left-navigation').toggleClass('show');
+            $('.site-header').toggleClass('no-shadow');
+        });
+    });
+</script>
 </body>
 </html>
