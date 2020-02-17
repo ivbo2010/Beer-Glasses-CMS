@@ -81,16 +81,19 @@
                     </form>
                 </li>
             @endguest
+        <li>
+            <div class="social-profiles">
+                <ul class="flex justify-content-start justify-content-lg-center align-items-center">
+                    <li><a href="{{ $settings[0]->facebook }}"><i class="fab fa-facebook fa-2x"></i></a></li>
+                    <li><a href="{{ $settings[0]->vimeo }}"><i class="fab fa-vimeo fa-2x"></i></a></li>
+                    <li><a href="{{ $settings[0]->twitter }}"><i class="fab fa-twitter fa-2x "></i></a></li>
+                    <li><a href="{{ $settings[0]->youtube }}"><i class="fab fa-youtube fa-2x"></i></a></li>
+                    <li><a href="{{ $settings[0]->linkedin }}"><i class="fab fa-linkedin fa-2x"></i></a></li>
+                </ul>
+            </div>
+        </li>
         </ul>
-        <div class="social-profiles">
-            <ul class="flex justify-content-start justify-content-lg-center align-items-center">
-                <li><a href="{{ $settings[0]->facebook }}"><i class="fab fa-facebook fa-2x"></i></a></li>
-                <li><a href="{{ $settings[0]->vimeo }}"><i class="fab fa-vimeo fa-2x"></i></a></li>
-                <li><a href="{{ $settings[0]->twitter }}"><i class="fab fa-twitter fa-2x "></i></a></li>
-                <li><a href="{{ $settings[0]->youtube }}"><i class="fab fa-youtube fa-2x"></i></a></li>
-                <li><a href="{{ $settings[0]->linkedin }}"><i class="fab fa-linkedin fa-2x"></i></a></li>
-            </ul>
-        </div>
+
     </nav>
     <div class="nav-bar-sep d-lg-none"></div>
     <main>
