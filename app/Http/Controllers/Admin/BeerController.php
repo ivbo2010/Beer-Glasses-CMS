@@ -203,7 +203,6 @@ class BeerController extends Controller
     {
         $data = Beer::findOrFail($id);
         $data->delete();
-
         return redirect('admin/beer')->with('error', 'Beer Deleted Successfully ');
     }
 
@@ -225,6 +224,14 @@ class BeerController extends Controller
     {
 
         $post = Beer::withTrashed()->where('id', $id)->first();
+
+        $fileimage = $post->image;
+        if(file_exists(public_path('images/'.$fileimage))){
+            unlink(public_path('images/'.$fileimage));
+        }else{
+            dd('File does not exists.');
+        }
+        
         $post->forceDelete();
         return redirect()->back();
 

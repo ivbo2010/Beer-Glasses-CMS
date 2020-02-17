@@ -15,11 +15,13 @@ class CategoriesTableSeeder extends Seeder
 
         Category::truncate();
         DB::table('categories')->truncate();
+
         $categories =Category::create([
             'name' => 'Amstel',
             'image' => '1489614712.jpeg',
         ]);
-        $categories =Category::create([
+
+        $categorie =Category::create([
             'name' => 'Bernard',
             'image' => '883000768.jpg',
         ]);
