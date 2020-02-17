@@ -14,14 +14,13 @@
                                 <h4 class="card-title"><span>Beer :</span> <b>{{ $data->name }} </b>
                                 </h4>
                                 <p class="card-text"><span>Description  </span>
-                                    <b>{!! $data->description !!}</b></p>
-                                <p class="card-text"><span>Qty  </span> <b>{{ $data->qty }}</b></p>
-                                <p class="card-text"><span>Category  </span>
-                                    <b>{{$data->category['name']}}</b></p>
-                                <p class="card-text"><span>Country  </span>
-                                    <b>{{$data->country['name']}}</b></p>
-                                <p class="card-text"><span>Tag  </span>
-                                    <b>{{$data->tag['name']}}</b></p>
+                                    {!! $data->description !!}</p>
+                                <p class="card-text"><span>Qty:  </span> <b>{{ $data->qty }}</b></p>
+
+                                    <div>Category: <a href="/category/{{ $data->category_id}}">{{ $data->category['name'] }}</a></div>
+                                    <div>Tag :<a href="/tag/{{ $data->tag_id}}">{{ $data->tag['name'] }}</a></div>
+                                    <div>Country: <a href="/country/{{ $data->country_id}}">{{ $data->country['name'] }}</a></div>
+
                             </div>
                         </div>
                     </div>
@@ -30,4 +29,3 @@
         </div>
     </div>
 @endsection
-

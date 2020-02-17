@@ -1,22 +1,26 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            @foreach($data as $beer)
-                <div class="col-md-3">
-                    <div class="card">
-                        <a href="/category/{{ $beer->id }}">
-                            <div class="card-img">
-                                <img src="{{ URL::to('/') }}/images/{{ $beer->image }}" class="img-fluid" alt="...">
+    <div class="outer-container list-page">
+        <div class="container-fluid">
+            <div class="col-lg-12 left-margin">
+                <div class="row">
+                    @foreach($data as $beer)
+                        <div class="col-6 col-md-4 col-sm-2 col-lg-2 no-padding">
+                            <div class="portfolio-content">
+                                <figure>
+                                    <img src="{{ URL::to('/') }}/images/{{ $beer->image }}" alt="">
+                                </figure>
+                                <div class="entry-content flex flex-column align-items-center justify-content-center">
+                                    <h3>
+                                        <a href="/category/{{ $beer->id }}">{{ $beer->name }}</a>
+                                    </h3>
+                                </div>
                             </div>
-                            <div class="card-header text-center text-black-50">
-                                <h4>{{ $beer->name }}</h4>
-                            </div>
-                        </a>
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
+                <div class="text-center">{!! $data->render() !!}</div>
+            </div>
         </div>
     </div>
-    {!! $data->links() !!}
 @endsection

@@ -16938,12 +16938,12 @@ img {
 
 .main-menu li a:hover,
 .main-menu li.current-menu-item a {
-  color: #0070c0;
+  color: #ff9800;
   text-decoration: none;
 }
 
 /*
-# Social Profiles
+# Social Media
 --------------------------------*/
 
 .social-profiles ul {
@@ -16953,7 +16953,7 @@ img {
 
 .social-profiles ul li {
   display: block;
-  padding: 0 18px;
+  padding: 0 5px;
   font-size: 1.5rem;
 }
 
@@ -16963,7 +16963,7 @@ img {
 }
 
 .social-profiles ul li a:hover {
-  color: #005fcc;
+  color: #ff9800;
 }
 
 .nav-bar-sep {
@@ -17160,11 +17160,11 @@ img {
   margin-bottom: 30px;
 }
 
-.home-page {
+.list-page {
   padding-top: 15px;
 }
 
-.home-page .portfolio-content {
+.list-page .portfolio-content {
   margin-bottom: 15px;
 }
 
@@ -17206,7 +17206,7 @@ img {
   font-weight: 500;
 }
 
-.home-page .portfolio-content h3 {
+.list-page .portfolio-content h3 {
   font-size: 2.25rem;
 }
 
@@ -17231,11 +17231,11 @@ img {
 }
 
 @media screen and (min-width: 768px) {
-  .home-page {
+  .list-page {
     padding: 0;
   }
 
-  .home-page .portfolio-content {
+  .list-page .portfolio-content {
     margin-bottom: 0;
   }
 }
@@ -17734,6 +17734,10 @@ img {
   .search-form .search-button .fa-search {
     color: #fff;
   }
+
+  .left-margin {
+    margin-left: 44px;
+  }
 }
 
 @media screen and (max-width: 779px) {
@@ -17763,5 +17767,9 @@ img {
 .pagination {
   align-items: center;
   justify-content: center;
+}
+
+.card a {
+  text-decoration: none;
 }
 

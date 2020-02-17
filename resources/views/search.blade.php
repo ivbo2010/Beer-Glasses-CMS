@@ -1,8 +1,16 @@
 @extends('layouts.app')
 @section('content')
+    <p>&nbsp;</p>
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-12">
+                <form method="get" action="{{ route('search.result') }}" class="form-inline mr-auto">
+                    <input type="text" name="query" value="{{ isset($searchterm) ? $searchterm : ''  }}" class="form-control col-sm-8" placeholder="Search events or blog posts..." aria-label="Search">
+                    <button class="btn orange btn-rounded btn-sm my-0 text-white" type="submit">
+                        Search
+                    </button>
+                </form>
+                <br>
                 @if ( empty ( $searchResults ) )
                     <h2>Sorry, no results<b></b>.</h2>
                 @endif
@@ -15,7 +23,10 @@
                         <hr />
 
                         @foreach($searchResults->groupByType() as $type => $modelSearchResults)
-                            <h2>{{ ucwords($type) }}</h2>
+                            <div class="card-header">
+                                <h4>{{ ucwords($type) }}</h4>
+                            </div>
+
                             <div class="row">
                                 @foreach($modelSearchResults as $searchResult)
                                     <div class="col-sm-6 col-md-3">
@@ -26,22 +37,20 @@
                                                         <img src="{{ URL::to('/') }}/images/{{ $searchResult->searchable->image }}" class="img-fluid" alt="..." />
                                                     </div>
                                                 @endif
-                                                    <div class="card-header text-center text-black-50">
-                                                        <h4> {{ $searchResult->title }}</h4>
-                                                    </div>
-
-
+                                                <div class="card-header text-center text-black-50">
+                                                    <h4> {{ $searchResult->title }}</h4>
+                                                </div>
                                             </a>
                                         </div>
                                     </div>
-
                                 @endforeach
                             </div>
                         @endforeach
-
                     @endif
                 @endif
             </div>
         </div>
     </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
 @endsection

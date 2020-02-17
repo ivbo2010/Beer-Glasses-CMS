@@ -13,12 +13,12 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $data = Country::latest()->paginate(10);
+        $data = Country::latest()->paginate(36);
         return view('country.index', compact('data'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    
+
     /**
      * Display the specified resource.
      *

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PubCategory;
 use Illuminate\Http\Request;
 
 
@@ -12,7 +13,8 @@ class PubCategoryController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //
+        $data = PubCategory::latest()->paginate(18);
+        return view('pubcategory.index', compact('data'));
     }
 
     /**
@@ -23,6 +25,7 @@ class PubCategoryController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show( $id ) {
-        //
+        $datashow = PubCategory::findOrFail($id);
+        return view('pubcategory.show', compact('datashow'));
     }
 }

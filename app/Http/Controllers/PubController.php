@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pub;
+use App\PubCategory;
 use Illuminate\Http\Request;
 
 class PubController extends Controller {
@@ -12,7 +13,7 @@ class PubController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $data = Pub::latest()->where('status',1)->paginate( 10 );
+        $data = Pub::latest()->where('status',1)->paginate( 18 );
 
         return view( 'pub.index', compact( 'data' ) );
     }
@@ -26,6 +27,7 @@ class PubController extends Controller {
      */
     public function show( $id ) {
         $data = Pub::findOrFail($id);
-        return view('pub.show', compact('data'));
+        $categories = PubCategory::all();
+        return view('pub.show', compact('data', 'categories'));
     }
 }

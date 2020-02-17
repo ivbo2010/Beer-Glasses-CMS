@@ -13,7 +13,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $data = Tag::latest()->paginate(5);
+        $data = Tag::latest()->paginate(36);
         return view('tag.index', compact('data'));
     }
 

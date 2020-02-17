@@ -6,11 +6,21 @@
             <div class="col-md-12">
                 <div class="stunning-header stunning-header-bg-lightviolet">
                     <div class="stunning-header-content">
-                        <h1 class="stunning-header-title">Tag: {{ $data->name }}</h1>
+
                     </div>
                 </div>
                 <div class="container">
                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="shop__thumb">
+                                    <div class="card-header text-center">
+                                        <h1 class="stunning-header-title">{{ $data->name }}</h1>
+                                    </div>
+                                    <div class="card-header text-center text-black-50">
+                                        <h4>TAGS</h4>
+                                    </div>
+                            </div>
+                        </div>
                         @foreach($data->beers as $beer)
                             <div class="col-md-3">
                                 <div class="shop__thumb">

@@ -1,29 +1,29 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <?php
-           // dd($data );
-            ?>
-
-            @foreach($data as $beer)
-                <div class="col-md-3">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ URL::to('/') }}/images/{{ $beer->image }}"
-                             alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ $beer->name }}</h4>
-                            <p class="card-text">{{ $beer->qty }}</p>
-                            <p class="card-text">{{ $beer->category['name'] }}</p>
-                            <p class="card-text">{{ $beer->tag['name'] }}</p>
-                            <p class="card-text">{{ $beer->country['name'] }}</p>
-                            <a href="/beer/{{ $beer->id }}" class="btn btn-primary">Show</a>
+    <div class="outer-container list-page">
+        <div class="container-fluid left-margin">
+            <div class="row">
+                @foreach($data as $beer)
+                    <div class="col-6 col-md-4 col-sm-2 col-lg-2 no-padding">
+                        <div class="portfolio-content">
+                            <figure>
+                                <img src="{{ URL::to('/') }}/images/{{ $beer->image }}" alt="">
+                            </figure>
+                            <div class="entry-content flex flex-column align-items-center justify-content-center">
+                                <h3>
+                                    <a href="/beer/{{ $beer->id }}">{{ $beer->name }}</a>
+                                </h3>
+                                <ul class="flex flex-wrap justify-content-center">
+                                    <li><a href="/category/{{ $beer->category_id}}">{{ $beer->category['name'] }}</a></li>
+                                    <li><a href="/tag/{{ $beer->tag_id}}">{{ $beer->tag['name'] }}</a></li>
+                                    <li><a href="/country/{{ $beer->country_id}}">{{ $beer->country['name'] }}</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
+            <div class="text-center">{!! $data->render() !!}</div>
         </div>
     </div>
-    {!! $data->links() !!}
 @endsection
-

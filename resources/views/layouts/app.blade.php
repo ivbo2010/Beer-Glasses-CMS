@@ -31,7 +31,7 @@
 <body>
 <div id="app">
     <header class="site-header">
-        <div class="site-branding">
+        <div class="left-branding">
             <h1 class="site-title">
                 <a href="/" rel="home"><img src="{{ URL::to('/') }}/images/{{ $settings[0]->site_logo }}" height="40" alt="..."></a>
             </h1>
@@ -46,7 +46,7 @@
         </div>
     </header>
     <nav class="left-navigation flex flex-column justify-content-between">
-        <div class="site-branding d-none d-lg-block ">
+        <div class="left-branding d-none d-lg-block ">
             <h1 class="site-title">
                 <a href="/" rel="home">{{ $settings[0]->site_name }}</a>
             </h1>
@@ -60,6 +60,10 @@
                         <i class="fas fa-search"></i></button>
                 </form>
             </li>
+            <li><a href="/beer">Beer glasses</a></li>
+            <li><a href="/category">Beer categories</a></li>
+            <li><a href="/pub">Pubs</a></li>
+            <li><a href="/pubcategory">Pubs categories</a></li>
             @guest
                 <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
                 @if (Route::has('register'))
@@ -80,10 +84,11 @@
         </ul>
         <div class="social-profiles">
             <ul class="flex justify-content-start justify-content-lg-center align-items-center">
-                <li><a href="#"><i class="fab fa-facebook fa-2x"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram fa-2x"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter fa-2x "></i></a></li>
-                <li><a href="#"><i class="fab fa-pinterest fa-2x"></i></a></li>
+                <li><a href="{{ $settings[0]->facebook }}"><i class="fab fa-facebook fa-2x"></i></a></li>
+                <li><a href="{{ $settings[0]->vimeo }}"><i class="fab fa-vimeo fa-2x"></i></a></li>
+                <li><a href="{{ $settings[0]->twitter }}"><i class="fab fa-twitter fa-2x "></i></a></li>
+                <li><a href="{{ $settings[0]->youtube }}"><i class="fab fa-youtube fa-2x"></i></a></li>
+                <li><a href="{{ $settings[0]->linkedin }}"><i class="fab fa-linkedin fa-2x"></i></a></li>
             </ul>
         </div>
     </nav>

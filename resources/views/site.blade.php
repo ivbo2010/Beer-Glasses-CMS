@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="outer-container home-page">
+    <div class="outer-container list-page left-margin">
         <div class="container-fluid">
             <div class="row">
                 @foreach($data as $beer)
-                    <div class="col-12 col-md-6 col-lg-2 no-padding">
+                    <div class="col-6 col-md-4 col-sm-2 col-lg-2 no-padding">
                         <div class="portfolio-content">
                             <figure>
                                 <img src="{{ URL::to('/') }}/images/{{ $beer->image }}" alt="">
