@@ -14,7 +14,8 @@ class BeersTableSeeder extends Seeder
     {
         Beer::truncate();
         DB::table('beers')->truncate();
-        $beers =Beer::create([
+        $beers =Beer::create(
+            [
             'name' => 'Amstel',
             'description' => 'Amstel description',
             'qty' => '0.500l',
@@ -22,7 +23,7 @@ class BeersTableSeeder extends Seeder
             'country_id' => '1',
             'tag_id' => '1',
             'status'=>'1',
-            'image' => '648869788.jpg',
+            'image' => 'amstel.jpg',
         ]);
         $beers =Beer::create([
             'name' => 'Bernard',
@@ -32,7 +33,7 @@ class BeersTableSeeder extends Seeder
             'country_id' => '1',
             'tag_id' => '1',
             'status'=>'1',
-            'image' => '361241082.jpg',
+            'image' => 'bernard300.jpg',
         ]);
         $beers =Beer::create([
             'name' => 'Bernard',
@@ -42,7 +43,7 @@ class BeersTableSeeder extends Seeder
             'country_id' => '1',
             'tag_id' => '1',
             'status'=>'1',
-            'image' => '1552088698.jpg',
+            'image' => 'bernard500.jpg',
         ]);
     }
 }

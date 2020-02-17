@@ -228,10 +228,8 @@ class BeerController extends Controller
         $fileimage = $post->image;
         if(file_exists(public_path('images/'.$fileimage))){
             unlink(public_path('images/'.$fileimage));
-        }else{
-            dd('File does not exists.');
         }
-        
+
         $post->forceDelete();
         return redirect()->back();
 

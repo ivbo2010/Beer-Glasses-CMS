@@ -141,6 +141,12 @@ class PubCategoryController extends Controller
     public function destroy($id)
     {
         $data = PubCategory::findOrFail($id);
+        $fileimage = $data->image;
+
+        if(file_exists(public_path('images/'.$fileimage))){
+            unlink(public_path('images/'.$fileimage));
+        }
+
         $data->delete();
 
         return redirect('admin/pubcategory')->with('error', 'Pub Category Deleted Successfully ');

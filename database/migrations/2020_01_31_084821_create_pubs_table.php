@@ -19,7 +19,7 @@ class CreatePubsTable extends Migration
             $table->longText('description');
             $table->string('category_id');
             $table->string('image');
-            $table->binary('status');
+            $table->tinyInteger('status')->default('1');
             $table->SoftDeletes();
             $table->timestamps();
         });

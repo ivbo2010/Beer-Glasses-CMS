@@ -180,13 +180,13 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],*/
-        ['header' => 'account_settings'],
+/*        ['header' => 'account_settings'],
         [
             'text' => 'Users',
             'url'  => 'admin/users',
             'icon' => 'fas fa-fw fa-user',
             'can' => 'manage-users',
-        ],
+        ],*/
 /*        [
             'text' => 'change_password',
             'url'  => 'admin/settings',
@@ -195,49 +195,63 @@ return [
 		['header' => 'BEER GLASSES'],
         [
             'text'    => 'Glasses',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-beer',
             'submenu' => [
                 [
                     'text' => 'Beer glasses',
                     'url'  => 'admin/beer',
+                    'icon'    => 'fas fa-beer',
                 ],
                 [
                     'text' => 'Category',
                     'url'  => 'admin/category',
+                    'icon'    => 'fa fa-list-alt',
                 ],
                 [
                     'text' => 'Country',
                     'url'  => 'admin/country',
+                    'icon'    => 'fa fa-flag',
                 ],
                 [
                     'text' => 'Tag',
                     'url'  => 'admin/tag',
+                    'icon'    => 'fa fa-tag',
                 ],
                        ],
         ],
         ['header' => 'PUBS'],
         [
             'text'    => 'Pubs',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-building',
             'submenu' => [
                 [
                     'text' => 'Pubs',
                     'url'  => 'admin/pub',
+                    'icon'    => 'fas fa-building',
                 ],
                 [
                     'text' => 'Pub Category',
                     'url'  => 'admin/pubcategory',
+                    'icon'    => 'fa fa-list-alt',
                 ],
             ],
         ],
         ['header' => 'SETTING'],
         [
             'text'    => 'Setting',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-cog',
             'submenu' => [
                 [
-                    'text' => 'Site page',
+                    'text' => 'Site CMS',
                     'url'  => 'admin/settings',
+                    'can' => 'manage-users',
+                    'icon'    => 'fas fa-file',
+                ],
+                [
+                    'text' => 'Users',
+                    'url'  => 'admin/users',
+                    'icon' => 'fas fa-fw fa-user',
+                    'can' => 'manage-users',
                 ],
             ],
         ],

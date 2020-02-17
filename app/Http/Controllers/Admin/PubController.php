@@ -184,6 +184,11 @@ class PubController extends Controller
     {
 
         $post = Pub::withTrashed()->where('id',$id)->first();
+        $fileimage = $post->image;
+
+        if(file_exists(public_path('images/'.$fileimage))){
+            unlink(public_path('images/'.$fileimage));
+        }
 
         $post->forceDelete();
 

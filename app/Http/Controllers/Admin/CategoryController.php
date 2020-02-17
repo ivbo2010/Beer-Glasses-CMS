@@ -139,6 +139,13 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $data = Category::findOrFail($id);
+
+        $fileimage = $data->image;
+
+        if(file_exists(public_path('images/'.$fileimage))){
+            unlink(public_path('images/'.$fileimage));
+        }
+
         $data->delete();
 
         return redirect('admin/category')->with('error', 'Category Deleted Successfully ');
