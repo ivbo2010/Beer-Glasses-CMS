@@ -17,19 +17,24 @@ class CountryController extends Controller
 	/**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+
+    public function index(Request $request)
     {
-        $data = Country::latest()->paginate(10);
-        return view('admin.country.index', compact('data'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
+        $data = Country::when($request->search, function ($q) use ($request) {
+
+
+        })->latest()->paginate(5);
+
+        return view('admin.country.index', compact('data'));
+
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {

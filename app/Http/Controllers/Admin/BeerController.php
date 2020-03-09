@@ -20,15 +20,33 @@ class BeerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $data = Beer::all();
+        // $data = Beer::all();
         $counts = Beer::count();
         $count = Beer::onlyTrashed()->get();
-        return view('admin.beer.index', compact('data', 'counts', 'count'));
+        $tags = Tag::all();
+        $categories = Category::all();
+        $country = Category::all();
+        $data = Beer::when($request->search, function ($q) use ($request) {
+
+
+        })->when($request->category_id, function ($q) use ($request) {
+
+            return $q->where('category_id', $request->category_id);
+
+        })->when($request->tag_id, function ($q) use ($request) {
+
+            return $q->where('tag_id', $request->tag_id);
+        })->when($request->country_id, function ($q) use ($request) {
+
+            return $q->where('country_id', $request->country_id);
+        })->latest()->paginate(5);
+
+        return view('admin.beer.index', compact('data', 'counts', 'count', 'categories', 'tags', 'country'));
 
     }
 
@@ -203,6 +221,7 @@ class BeerController extends Controller
     {
         $data = Beer::findOrFail($id);
         $data->delete();
+
         return redirect('admin/beer')->with('error', 'Beer Deleted Successfully ');
     }
 
@@ -224,12 +243,6 @@ class BeerController extends Controller
     {
 
         $post = Beer::withTrashed()->where('id', $id)->first();
-
-        $fileimage = $post->image;
-        if(file_exists(public_path('images/'.$fileimage))){
-            unlink(public_path('images/'.$fileimage));
-        }
-
         $post->forceDelete();
         return redirect()->back();
 

@@ -15,19 +15,25 @@ class CategoryController extends Controller
 	/**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+
+    public function index(Request $request)
     {
-        $data = Category::latest()->paginate(10);
-        return view('admin.category.index', compact('data'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
+        $data = Category::when($request->search, function ($q) use ($request) {
+
+
+
+        })->latest()->paginate(5);
+
+        return view('admin.category.index', compact('data'));
+
+    }//end of index
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -139,13 +145,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $data = Category::findOrFail($id);
-
-        $fileimage = $data->image;
-
-        if(file_exists(public_path('images/'.$fileimage))){
-            unlink(public_path('images/'.$fileimage));
-        }
-
         $data->delete();
 
         return redirect('admin/category')->with('error', 'Category Deleted Successfully ');

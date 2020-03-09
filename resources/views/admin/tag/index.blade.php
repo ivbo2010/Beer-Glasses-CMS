@@ -25,14 +25,16 @@
                                 <tr>
                                     <th width="5%">Id</th>
                                     <th>Name</th>
+                                    <th>Related Tags</th>
                                     <th width="15%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($data as $beer)
+                                @foreach ($data as $index=>$beer)
                                     <tr>
                                         <td>{{ $beer->id }}</td>
                                         <td>{{ $beer->name }}</td>
+                                        <td><a href="/admin/beer?tag_id={{ $beer->id}}" class="btn btn-info btn-sm">Realted</a></td>
                                         <td>
                                             <form action="{{ route('tag.destroy', $beer->id) }}" method="post">
                                                 <a href="{{ route('tag.show', $beer->id) }}"
