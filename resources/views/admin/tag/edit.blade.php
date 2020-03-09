@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                             <a href="{{ route('tag.index') }}" class="btn btn-warning">Cancel</a>
-                            <button type="submit" name="add" class="btn btn-info input-lg">Create
+                            <button type="submit" name="add" class="btn btn-primary input-lg">Create
                                 tag
                             </button>
                         </form>

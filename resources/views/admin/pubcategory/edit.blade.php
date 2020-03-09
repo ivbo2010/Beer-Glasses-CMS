@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <a href="{{ route('pubcategory.index') }}" class="btn btn-warning">Cancel</a>
-                            <button type="submit" name="add" class="btn btn-info input-lg">Edit Pub
+                            <button type="submit" name="add" class="btn btn-primary input-lg">Edit Pub
                                 category
                             </button>
                         </form>

@@ -20,7 +20,7 @@
                                 <a href="{{ route('beer.trashed') }}" class="btn btn-danger">
                                     <span class="fa fa-plus-circle"> Trash Beer</span></a>
                             @endif
-                            <a href="{{ route('beer.create') }}" class="btn btn-info">
+                            <a href="{{ route('beer.create') }}" class="btn btn-primary">
                                 <span class="fa fa-plus-circle"> Beer glass</span></a>
                         </div>
                         <br>
@@ -61,7 +61,7 @@
                                         <form action="{{ route('beer.destroy', $beer->id) }}" method="post">
                                         <a href="{{ route('beer.show', $beer->id) }}" class="btn btn-sm btn-warning"><span class="fa fa-eye"></span></a>
                                         @can('edit-users')
-                                        <a href="{{ route('beer.edit', $beer->id) }}" class="btn btn-sm btn-info"><span class="fa fa-edit"></span></a>
+                                        <a href="{{ route('beer.edit', $beer->id) }}" class="btn btn-sm btn-primary"><span class="fa fa-edit"></span></a>
                                         @endcan
                                         @can('delete-users')
                                             @method('DELETE')

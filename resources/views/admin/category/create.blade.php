@@ -28,7 +28,7 @@
                                 </div>
                             </div>
                             <a href="{{ route('category.index') }}" class="btn btn-warning">Cancel</a>
-                            <button type="submit" name="add" class="btn btn-info input-lg">Create
+                            <button type="submit" name="add" class="btn btn-primary input-lg">Create
                                 category
                             </button>
                         </form>

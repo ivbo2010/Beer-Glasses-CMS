@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <div class="col-md-12">
                     <div align="left">
-                       <a href="/admin/beer" class="btn btn-info">
+                       <a href="/admin/beer" class="btn btn-primary">
                             <span class="fa fa-plus-circle"> All beer</span></a>
                     </div>
                     <br>
@@ -54,7 +54,7 @@
                             <td>{{ $beer->country['name'] }}</td>
                             <td>{{ $beer->tag['name'] }}</td>
                             <td width="25%">
-                                <a href="{{ route('beer.restore', $beer->id) }}" class="btn btn-sm btn-info">
+                                <a href="{{ route('beer.restore', $beer->id) }}" class="btn btn-sm btn-primary">
                                     <i class="fas fa-trash-restore"></i> Restore</a>
                                 @csrf
                                 <a href="{{ route('beer.kill', $beer->id) }}" class="btn btn-sm btn-danger"><span

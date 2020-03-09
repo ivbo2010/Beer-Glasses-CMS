@@ -19,7 +19,7 @@
                                     <a href="{{ route('pub.trashed') }}" class="btn btn-danger">
                                         <span class="fa fa-plus-circle"> Trash Beer</span></a>
                                 @endif
-                                <a href="{{ route('pub.create') }}" class="btn btn-info">
+                                <a href="{{ route('pub.create') }}" class="btn btn-primary">
                                     <span class="fa fa-plus-circle"> Pub</span></a>
                             </div>
                             <br>
@@ -54,7 +54,7 @@
                                             <form action="{{ route('pub.destroy', $beer->id) }}" method="post">
                                                 <a href="{{ route('pub.show', $beer->id) }}" class="btn btn-sm btn-warning"><span class="fa fa-eye"></span></a>
                                                 @can('edit-users')
-                                                    <a href="{{ route('pub.edit', $beer->id) }}" class="btn btn-sm btn-info"><span class="fa fa-edit"></span></a>
+                                                    <a href="{{ route('pub.edit', $beer->id) }}" class="btn btn-sm btn-primary"><span class="fa fa-edit"></span></a>
                                                 @endcan
                                                 @csrf
                                                 @can('delete-users')

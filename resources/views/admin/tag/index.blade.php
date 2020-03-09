@@ -14,7 +14,7 @@
                         </div>
                         <div class="col-md-12">
                             <div align="left">
-                                <a href="{{ route('tag.create') }}" class="btn btn-info">
+                                <a href="{{ route('tag.create') }}" class="btn btn-primary">
                                     <span class="fa fa-plus-circle"> Tag</span></a>
                             </div>
                             <br>
@@ -34,14 +34,14 @@
                                     <tr>
                                         <td>{{ $beer->id }}</td>
                                         <td>{{ $beer->name }}</td>
-                                        <td><a href="/admin/beer?tag_id={{ $beer->id}}" class="btn btn-info btn-sm">Realted</a></td>
+                                        <td><a href="/admin/beer?tag_id={{ $beer->id}}" class="btn btn-primary btn-sm">Realted</a></td>
                                         <td>
                                             <form action="{{ route('tag.destroy', $beer->id) }}" method="post">
                                                 <a href="{{ route('tag.show', $beer->id) }}"
                                                     class="btn btn-sm btn-warning"><span class="fa fa-eye"></span></a>
                                                 @can('edit-users')
                                                     <a href="{{ route('tag.edit', $beer->id) }}"
-                                                        class="btn btn-sm btn-info"><span class="fa fa-edit"></span></a>
+                                                        class="btn btn-sm btn-primary"><span class="fa fa-edit"></span></a>
                                                 @endcan
                                                 @csrf
                                                 @can('delete-users')

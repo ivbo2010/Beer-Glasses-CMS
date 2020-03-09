@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                             <a href="{{ route('beer.index') }}" class="btn btn-warning">Cancel</a>
-                            <button type="submit" name="add" class="btn btn-info input-lg">Update
+                            <button type="submit" name="add" class="btn btn-primary input-lg">Update
                                 Beer
                             </button>
                         </form>

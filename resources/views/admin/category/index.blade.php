@@ -14,7 +14,7 @@
                         </div>
                         <div class="col-md-12">
                             <div align="left">
-                                <a href="{{ route('category.create') }}" class="btn btn-info">
+                                <a href="{{ route('category.create') }}" class="btn btn-primary">
                                     <span class="fa fa-plus-circle"> Category</span></a>
                             </div>
                             <br>
@@ -42,7 +42,7 @@
                                         </td>
                                         <td>{{ $beer->name }}</td>
 
-                                        <td><a href="/admin/beer?category_id={{$beer->id}}" class="btn btn-info btn-sm">Related</a>
+                                        <td><a href="/admin/beer?category_id={{$beer->id}}" class="btn btn-primary btn-sm">Related</a>
                                         </td>
                                         <td>
                                             <form action="{{ route('category.destroy', $beer->id) }}" method="post">
@@ -50,7 +50,7 @@
                                                    class="btn btn-sm btn-warning"><span class="fa fa-eye"></span></a>
                                                 @can('edit-users')
                                                     <a href="{{ route('category.edit', $beer->id) }}"
-                                                       class="btn btn-sm btn-info"><span class="fa fa-edit"></span></a>
+                                                       class="btn btn-sm btn-primary"><span class="fa fa-edit"></span></a>
                                                 @endcan
                                                 @csrf
                                                 @can('delete-users')

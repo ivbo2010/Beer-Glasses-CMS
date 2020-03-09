@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <a href="{{ route('beer.index') }}" class="btn btn-warning">Cancel</a>
-                                    <button type="submit" name="add" class="btn btn-info input-lg">
+                                    <button type="submit" name="add" class="btn btn-primary input-lg">
                                         Create
                                         Beer
                                     </button>
