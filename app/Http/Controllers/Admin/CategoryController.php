@@ -19,16 +19,13 @@ class CategoryController extends Controller
      */
 
     public function index(Request $request)
-    {
-        $data = Category::when($request->search, function ($q) use ($request) {
+{
+    $data = Category::when($request->search, function ($q) use ($request) {
+    })->latest()->paginate(5);
 
+    return view('admin.category.index', compact('data'));
 
-
-        })->latest()->paginate(5);
-
-        return view('admin.category.index', compact('data'));
-
-    }//end of index
+}
 
     /**
      * Show the form for creating a new resource.

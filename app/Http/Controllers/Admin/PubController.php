@@ -16,13 +16,19 @@ class PubController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index() {
+    public function index(Request $request) {
 
-        $data = Pub::all();
         $count = Pub::onlyTrashed()->get();
-        return view( 'admin.pub.index', compact( 'data' ,'count') );
+        $category = PubCategory::all();
+        $data = Pub::when($request->search, function ($q) use ($request) {
+        })->when($request->category_id, function ($q) use ($request) {
+
+            return $q->where('category_id', $request->category_id);
+        })->latest()->paginate(5);
+
+        return view( 'admin.pub.index', compact( 'data' ,'count','category') );
 
     }
 

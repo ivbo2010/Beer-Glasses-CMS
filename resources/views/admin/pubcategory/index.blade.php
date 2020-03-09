@@ -27,6 +27,7 @@
                                     <th width="5%">Id</th>
                                     <th>Image</th>
                                     <th>Name</th>
+                                    <th>Relation</th>
                                     <th width="15%">Action</th>
                                 </tr>
                                 </thead>
@@ -40,6 +41,8 @@
                                                 @endif
                                         </td>
                                         <td>{{ $beer->name }}</td>
+                                        <td><a href="/admin/pub?category_id={{$beer->id}}" class="btn btn-info btn-sm">Related</a>
+
                                         <td>
                                             <form action="{{ route('pubcategory.destroy', $beer->id) }}" method="post">
                                                 <a href="{{ route('pubcategory.show', $beer->id) }}" class="btn btn-sm btn-warning"><span class="fa fa-eye"></span></a>
