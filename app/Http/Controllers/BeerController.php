@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Beer;
 use App\Category;
 use Spatie\Searchable\Search;
+use Mohamedsabil83\LaravelLoadmore\Loadmore;
 class BeerController extends Controller
 {
     /**
@@ -13,7 +14,7 @@ class BeerController extends Controller
      */
     public function index()
     {
-        $data = Beer::latest()->where('status',1)->paginate(18);
+        $data = Beer::latest()->where('status',1)->loadmore(24,24);
         return view('beer.index', compact('data'));
     }
 

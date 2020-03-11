@@ -44,7 +44,7 @@ class BeerController extends Controller
         })->when($request->country_id, function ($q) use ($request) {
 
             return $q->where('country_id', $request->country_id);
-        })->latest()->paginate(5);
+        })->latest()->paginate();
 
         return view('admin.beer.index', compact('data', 'counts', 'count', 'categories', 'tags', 'country'));
 

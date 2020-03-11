@@ -13,6 +13,7 @@
         "jeroennoten/laravel-adminlte": "^3.0",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
+        "mohamedsabil83/laravel-loadmore": "^0.3.0",
         "spatie/laravel-searchable": "^1.5"
     },
     "require-dev": {

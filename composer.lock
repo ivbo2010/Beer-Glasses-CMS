@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de3dc030926fe2ada56cda4a5577859d",
+    "content-hash": "a63bf525acbf39a473a43d6017495596",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -882,6 +882,55 @@
                 "storage"
             ],
             "time": "2020-02-05T18:14:17+00:00"
+        },
+        {
+            "name": "mohamedsabil83/laravel-loadmore",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mohamedsabil83/laravel-loadmore.git",
+                "reference": "a2d8904529e22a18717a94cc20868c1cfe9c9651"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mohamedsabil83/laravel-loadmore/zipball/a2d8904529e22a18717a94cc20868c1cfe9c9651",
+                "reference": "a2d8904529e22a18717a94cc20868c1cfe9c9651",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.8.*|^6.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.8|^4.0",
+                "phpunit/phpunit": "^7.0|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mohamedsabil83\\LaravelLoadmore\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Sabil",
+                    "email": "me@mohamedsabil83.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Allow pagination to load an initial number of items on the first page and subsequent pages can load a different number of items",
+            "homepage": "https://github.com/mohamedsabil83/laravel-loadmore",
+            "keywords": [
+                "laravel",
+                "loadmore",
+                "mohamedsabil83",
+                "pagination"
+            ],
+            "time": "2019-11-20T11:42:13+00:00"
         },
         {
             "name": "monolog/monolog",

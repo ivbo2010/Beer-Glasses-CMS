@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Mohamedsabil83\LaravelLoadmore\Loadmore;
 
 class Beer extends Model implements Searchable {
 
     use SoftDeletes;
+    use Loadmore;
 
     protected $fillable = [
         'name',
