@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Catbook - Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+		<ion-fab-button href='/home'>
+			<ion-icon name="arrow-dropleft"></ion-icon>
+		  </ion-fab-button>
+  </ion-fab>
+  
+	<img id='imageDisplay' src="">
+
+  <div *ngIf='post === null'>
+    <ion-row class="ion-justify-content-center">
+      <h3> Adicionar post </h3>
+    </ion-row>
+    <form [formGroup]='post_form' (ngSubmit)='addPost()'>
+      <ion-item>
+        <ion-label position='floating'>Link da Imagem</ion-label>
+        <ion-input id='imageInput' type='text' name='image' formControlName='image' (keyup)='updateImage()'></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position='floating'>Descrição</ion-label>
+        <ion-textarea name='description' formControlName='description'></ion-textarea>
+      </ion-item>
+      <ion-row class="ion-justify-content-center">
+        <ion-button type="submit">Submit</ion-button>
+      </ion-row>
+    </form>
+  </div>
+
+  <div *ngIf='post !== null'>
+    <img src="{{post?.image}}">
+    <p>{{post?.description}}</p>
+
+    <ion-row class="ion-justify-content-center">
+      <h3> Editar post </h3>
+    </ion-row>
+    <form [formGroup]='post_form' (ngSubmit)='updatePost(post.id)'>
+      <ion-item>
+        <ion-label position='floating'>Link da Imagem</ion-label>
+        <ion-input id='imageInput' type='text' name='image' formControlName='image' (keyup)='updateImage()'></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position='floating'>Descrição</ion-label>
+        <ion-textarea name='description' formControlName='description'></ion-textarea>
+      </ion-item>
+      <ion-row class="ion-justify-content-center">
+        <ion-button type="submit">Submit</ion-button>
+      </ion-row>
+    </form>
+  </div>
+
+</ion-content>

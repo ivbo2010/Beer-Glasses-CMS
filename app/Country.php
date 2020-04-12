@@ -9,7 +9,7 @@ use Spatie\Searchable\SearchResult;
 class Country extends Model implements Searchable
 {
     protected $fillable = ['name'];
-
+    protected $hidden = array('created_at', 'updated_at', 'deleted_at');
     /**
      * @return \Spatie\Searchable\SearchResult
      */

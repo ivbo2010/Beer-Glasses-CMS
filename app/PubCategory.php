@@ -9,8 +9,14 @@ class PubCategory extends Model {
         'name',
         'image'
     ];
-
-    public function test() {
+    protected $hidden = array('created_at', 'updated_at', 'deleted_at');
+    /*public function test() {
         return $this->hasMany( 'App\Pub' ,'category_id');
+    }*/
+
+    public function pub()
+    {
+        return $this->hasMany('App\Pub','category_id');
     }
+
 }

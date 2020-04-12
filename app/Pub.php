@@ -17,7 +17,7 @@ class Pub extends Model implements Searchable
         'category_id',
         'image'
     ];
-
+    protected $hidden = array('created_at', 'updated_at', 'deleted_at');
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

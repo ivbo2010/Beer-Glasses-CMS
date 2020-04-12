@@ -8,7 +8,7 @@ use Spatie\Searchable\SearchResult;
 
 class Category extends Model implements Searchable {
     protected $fillable = [ 'name', 'image' ];
-
+    protected $hidden = array('created_at', 'updated_at', 'deleted_at');
     /**
      * @return \Spatie\Searchable\SearchResult
      */

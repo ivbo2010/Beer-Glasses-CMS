@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+    	Catbook
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+		<ion-fab-button href='/post/-1'>
+			<ion-icon name="add"></ion-icon>
+		  </ion-fab-button>
+	</ion-fab>
+
+	<ion-card *ngFor='let post of posts'>
+		<img src="{{post?.image}}">
+		<p>{{post?.description}}</p>
+		<ion-row class="ion-justify-content-end">
+			<a color="primary" [href]=" '/post/' + post.id"> Ver post </a>
+			<a color="primary" [href]=" '/post/' + post.id"> Editar post </a>
+			<ion-button color='danger' (click)='deletePost(post.id)'> X </ion-button>
+		</ion-row>
+	</ion-card>
+	  <div *ngIf='post !== null'>
+    <img src="{{post?.image}}">
+    <p>{{post?.description}}</p>
+
+  </div>
+
+</ion-content>

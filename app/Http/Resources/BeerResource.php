@@ -16,4 +16,5 @@ class BeerResource extends JsonResource
     {
         return parent::toArray($request);
     }
+
 }

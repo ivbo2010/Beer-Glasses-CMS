@@ -14,11 +14,11 @@
                         </div>
                         <div class="col-md-12">
                             <div align="left">
-                                <a href="{{ route('country.create') }}" class="btn btn-primary">
-                                    <span class="fa fa-plus-circle"> Country</span></a>
-                            </div>
-                            <br>
+                            <a href="{{ route('country.create') }}" class="btn btn-primary">
+                                <span class="fa fa-plus-circle"> Country</span></a>
                         </div>
+                        <br>
+                    </div>
                         <div class="box-body">
                             <table id="laravel_datatable" class="table table-bordered table-striped">
                                 <thead>

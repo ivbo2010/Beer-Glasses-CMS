@@ -24,7 +24,7 @@ class PubController extends Controller
      */
     public function index()
     {
-        $pubs = Pub::paginate(10);
+        $pubs = Pub::with('category')->paginate(10);
 
         if (!$pubs) {
             throw new HttpException(400, "Invalid data");
@@ -37,11 +37,13 @@ class PubController extends Controller
 
     /**
      * @param Pub $pub
-     * @return PubResource
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Pub $pub)
     {
-        return new PubResource($pub);
+        $beer= Pub::with('category')->findOrFail($pub);
+
+        return response()->json($beer, 200);
     }
 
 

@@ -43,6 +43,16 @@
             <div class="menu-close-icon">
                 <img src="{{ asset('images/close.png') }}" alt="menu close">
             </div>
+{{--            <ul class="navbar-nav ml-auto">
+                <!-- Authentication Links -->
+                @foreach (config('app.available_locales') as $locale)
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ route(\Illuminate\Support\Facades\Route::currentRouteName(), $locale) }}"
+                           @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
+                    </li>
+            @endforeach
+            </ul>--}}
         </div>
     </header>
     <nav class="left-navigation flex flex-column justify-content-between">

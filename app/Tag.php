@@ -8,7 +8,7 @@ use Spatie\Searchable\SearchResult;
 
 class Tag extends Model implements Searchable {
     protected $fillable = [ 'name' ];
-
+    protected $hidden = array('created_at', 'updated_at', 'deleted_at');
     /**
      * @return \Spatie\Searchable\SearchResult
      */
@@ -24,6 +24,6 @@ class Tag extends Model implements Searchable {
 
     public function beers()
     {
-        return $this->hasMany('App\Beer')->orderBy('name', 'desc');
+        return $this->hasMany('App\Beer')->with('category','country','tag')->orderBy('name', 'desc');
     }
 }

@@ -1,0 +1,13 @@
+{
+  "Login": "Логин",
+  "E-Mail Address": "Емайл",
+  "Password": "Парола",
+  "Remember Me": "Запомни ме",
+  "Forgot Your Password?": "Забравена парола?",
+  "Register": "Регистрация",
+    "Name": "Име",
+    "E-mail address": "Емейл",
+    "Confirm Password": "Повтори паролата",
+    "Dashboard": "Табло",
+    "You are logged in!": "Вие сте логнат!"
+}

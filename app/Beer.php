@@ -14,7 +14,7 @@ class Beer extends Model implements Searchable {
     use Loadmore;
 
     protected $fillable = [
-        'name',
+        'title',
         'description',
         'qty',
         'category_id',
@@ -25,6 +25,7 @@ class Beer extends Model implements Searchable {
     ];
 
     protected $dates =['deleted_at'];
+    protected $hidden = array('created_at', 'updated_at', 'deleted_at');
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
